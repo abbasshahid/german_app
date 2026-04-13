@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Archivist | Dashboard</title>
+    <script src="/assets/js/tailwind-theme.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles/app.css" />
+  </head>
+  <body class="app-body bg-background text-on-background">
+    <div id="app-sidebar"></div>
+    <main class="app-main min-h-screen lg:ml-64">
+      <div id="app-topbar"></div>
+      <div class="page-shell px-5 pb-12 pt-8 lg:px-12">
+        <section class="page-hero hero-panel hero-panel--ink mb-12 flex flex-col gap-8 rounded-[2rem] px-8 py-10 lg:flex-row lg:items-end lg:justify-between">
+          <div class="max-w-3xl">
+            <h1 id="hero-greeting" class="page-title text-5xl font-bold tracking-tight text-[#fff6ea] lg:text-6xl"></h1>
+            <p id="hero-focus" class="page-copy mt-4 max-w-2xl text-xl text-[#f3e7d4]/82"></p>
+          </div>
+          <div class="inline-flex rounded-full bg-white/10 p-1">
+            <span class="rounded-full bg-tertiary px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-on-primary">B2</span>
+          </div>
+        </section>
+
+        <section class="mb-12 grid gap-6 lg:grid-cols-3">
+          <div class="tinted-card metric-card rounded-[1.5rem] p-8">
+            <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Consistency</p>
+            <h2 id="stat-streak" class="metric-value mt-6 text-4xl font-bold text-primary"></h2>
+            <p class="mt-2 text-on-surface-variant">Active study streak</p>
+          </div>
+          <div class="tinted-card tinted-card--sage metric-card rounded-[1.5rem] p-8">
+            <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Lexicon</p>
+            <h2 id="stat-words" class="metric-value mt-6 text-4xl font-bold text-primary"></h2>
+            <p class="mt-2 text-on-surface-variant">Words saved</p>
+          </div>
+          <div class="tinted-card tinted-card--ink metric-card rounded-[1.5rem] p-8">
+            <div class="flex items-center justify-between">
+              <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-white/70">Weekly Focus</p>
+              <span id="stat-mastered" class="metric-value text-2xl font-bold"></span>
+            </div>
+            <div id="weekly-chart" class="mt-8 flex h-40 items-end gap-3"></div>
+          </div>
+        </section>
+
+        <section class="mb-12">
+          <div class="mb-6 flex items-center justify-between">
+            <div>
+              <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Reading Queue</p>
+              <h3 class="section-heading mt-2 text-3xl font-bold text-primary">Recommended for You</h3>
+            </div>
+            <a href="/library" class="font-label text-xs font-bold uppercase tracking-[0.18em] text-secondary">Browse all stories</a>
+          </div>
+          <div id="recommended-grid" class="grid gap-8 md:grid-cols-2 xl:grid-cols-3"></div>
+        </section>
+
+        <section class="feature-panel rounded-[1.75rem] p-8">
+          <div class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <h3 id="milestone-title" class="section-heading text-3xl font-bold text-[#fff6ea]"></h3>
+              <p id="milestone-description" class="page-copy mt-3 max-w-2xl text-lg text-[#f2e8d8]/82"></p>
+            </div>
+            <a href="/flashcards" class="inline-flex items-center justify-center rounded-xl bg-white/12 px-6 py-4 font-label text-sm font-bold uppercase tracking-[0.2em] text-[#fff6ea] ring-1 ring-white/10">Continue Review</a>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="/assets/js/dashboard-page.js"></script>
+  </body>
+</html>

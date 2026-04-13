@@ -1,0 +1,18 @@
+node_modules/
+.env
+
+# Runtime database files
+backend/data/*.sqlite
+backend/data/*.sqlite-shm
+backend/data/*.sqlite-wal
+
+# Logs
+backend/data/*.log
+
+# Raw dictionary import files
+backend/data/imports/*
+!backend/data/imports/.gitkeep
+backend/data/*.csv
+backend/data/*.jsonl
+backend/data/*.jsonl.gz
+backend/data/*.jsonl.bz2

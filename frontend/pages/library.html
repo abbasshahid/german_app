@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Archivist | Story Library</title>
+    <script src="/assets/js/tailwind-theme.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles/app.css" />
+  </head>
+  <body class="app-body bg-background text-on-background">
+    <div id="app-sidebar"></div>
+    <main class="app-main min-h-screen lg:ml-64">
+      <div id="app-topbar"></div>
+      <div class="page-shell px-5 pb-12 pt-8 lg:px-12">
+        <header class="page-hero hero-panel hero-panel--warm mb-12 max-w-5xl rounded-[2rem] px-7 py-8 lg:px-8 lg:py-9">
+          <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Curated Readings</p>
+          <h1 class="page-title mt-3 text-4xl font-bold tracking-tight text-primary lg:text-5xl">The Story Library</h1>
+          <p class="page-copy mt-4 max-w-3xl text-lg leading-8 text-on-surface-variant">Immerse yourself in stories, dialogues, and essays shaped around CEFR progression.</p>
+        </header>
+
+        <section class="section-band filters-shell mb-10 space-y-6 rounded-[1.75rem] p-6">
+          <div class="space-y-4">
+            <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Proficiency Level</p>
+            <div class="flex flex-wrap gap-3">
+              <button data-filter-group="level" data-filter-value="A1" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">A1</button>
+              <button data-filter-group="level" data-filter-value="A2" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">A2</button>
+              <button data-filter-group="level" data-filter-value="B1" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">B1</button>
+              <button data-filter-group="level" data-filter-value="B2" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">B2</button>
+              <button data-filter-group="level" data-filter-value="C1" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">C1</button>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Genre</p>
+            <div class="flex flex-wrap gap-3">
+              <button data-filter-group="genre" data-filter-value="dialogue" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Dialogue</button>
+              <button data-filter-group="genre" data-filter-value="essay" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Essay</button>
+              <button data-filter-group="genre" data-filter-value="mystery" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Mystery</button>
+              <button data-filter-group="genre" data-filter-value="story" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Story</button>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Duration</p>
+            <div class="flex flex-wrap gap-3">
+              <button data-filter-group="duration" data-filter-value="short" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Short</button>
+              <button data-filter-group="duration" data-filter-value="medium" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Medium</button>
+              <button data-filter-group="duration" data-filter-value="long" class="rounded-full bg-surface-container-high px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Long</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="library-grid" class="grid gap-6 md:grid-cols-2 xl:grid-cols-3"></section>
+
+        <div class="mt-12 flex flex-col items-center gap-4">
+          <button id="library-pagination" class="section-band rounded-full px-8 py-3 font-label text-xs font-bold uppercase tracking-[0.22em] text-primary"></button>
+          <button id="next-page" class="rounded-full bg-primary px-6 py-3 font-label text-xs font-bold uppercase tracking-[0.22em] text-on-primary">Load More</button>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/assets/js/library-page.js"></script>
+  </body>
+</html>

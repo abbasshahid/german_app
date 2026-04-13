@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Archivist | Flashcards</title>
+    <script src="/assets/js/tailwind-theme.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles/app.css" />
+  </head>
+  <body class="app-body bg-background text-on-background">
+    <div id="app-sidebar"></div>
+    <main class="app-main min-h-screen lg:ml-64">
+      <div id="app-topbar"></div>
+      <div class="page-shell mx-auto max-w-5xl px-5 pb-12 pt-8 lg:px-12">
+        <div class="section-band mb-10 rounded-[1.5rem] p-6">
+          <div class="mb-3 flex items-end justify-between">
+            <span class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Session Progress</span>
+            <span id="session-position" class="text-lg font-bold text-primary"></span>
+          </div>
+          <div class="h-1 bg-surface-container-highest">
+            <div id="session-progress" class="h-full bg-secondary"></div>
+          </div>
+        </div>
+
+        <section id="flashcard-state">
+          <div class="grid gap-8 lg:grid-cols-2">
+            <div class="flashcard-shell flashcard-shell--front rounded-[1.75rem] p-10">
+              <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Vocabulary Entry</p>
+              <h1 id="flashcard-word" class="flashcard-word mt-10 text-5xl font-bold text-primary"></h1>
+              <button id="flashcard-audio" class="mt-6 inline-flex items-center gap-2 text-secondary">
+                <span class="material-symbols-outlined text-3xl">volume_up</span>
+                <span class="font-label text-xs font-bold uppercase tracking-[0.18em]">Listen</span>
+              </button>
+            </div>
+            <div class="flashcard-shell flashcard-shell--back rounded-[1.75rem] p-10">
+              <div class="flex items-center gap-3">
+                <span id="flashcard-level" class="rounded-full bg-secondary-container px-3 py-1 font-label text-[10px] font-bold uppercase tracking-[0.18em] text-primary"></span>
+                <span id="flashcard-pos" class="font-label text-xs font-bold uppercase tracking-[0.18em] text-outline"></span>
+              </div>
+              <h2 id="flashcard-meaning" class="flashcard-meaning mt-8 text-4xl font-bold text-primary"></h2>
+              <div class="mt-10 border-t border-white/60 pt-8">
+                <p id="flashcard-example-de" class="flashcard-example text-2xl italic text-on-surface"></p>
+                <p id="flashcard-example-en" class="mt-4 font-label text-sm text-on-surface-variant"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <p class="mb-5 text-center font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Rate your recall</p>
+            <div class="grid gap-4 md:grid-cols-4">
+              <button data-rating="again" class="rounded-xl bg-error-container px-4 py-5 font-label text-sm font-bold uppercase tracking-[0.18em] text-error">Again</button>
+              <button data-rating="hard" class="rounded-xl bg-surface-container-low px-4 py-5 font-label text-sm font-bold uppercase tracking-[0.18em] text-primary">Hard</button>
+              <button data-rating="good" class="rounded-xl bg-primary/10 px-4 py-5 font-label text-sm font-bold uppercase tracking-[0.18em] text-primary">Good</button>
+              <button data-rating="easy" class="rounded-xl bg-secondary-container px-4 py-5 font-label text-sm font-bold uppercase tracking-[0.18em] text-secondary">Easy</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="flashcard-empty" class="feature-panel hidden rounded-[1.75rem] p-10 text-center">
+          <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">All clear</p>
+          <h2 class="mt-4 text-4xl font-bold text-[#fff6ea]">No cards are due right now.</h2>
+          <p class="mt-4 text-lg text-[#f2e8d8]/82">Read another story or save a few more words to generate the next session.</p>
+          <a href="/library" class="mt-8 inline-flex rounded-xl bg-white/12 px-6 py-4 font-label text-sm font-bold uppercase tracking-[0.2em] text-[#fff6ea] ring-1 ring-white/10">Return to Library</a>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="/assets/js/flashcards-page.js"></script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Archivist | Sign In</title>
+    <script src="/assets/js/tailwind-theme.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles/app.css" />
+  </head>
+  <body class="bg-background text-on-background">
+    <main class="min-h-screen px-4 py-8 lg:px-8">
+      <div class="auth-shell mx-auto grid min-h-[calc(100vh-4rem)] max-w-6xl overflow-hidden rounded-[2rem] bg-surface-container-low lg:grid-cols-[1.1fr_0.9fr]">
+        <section class="auth-showcase relative flex flex-col justify-between bg-primary px-8 py-10 text-on-primary lg:px-12 lg:py-14">
+          <div>
+            <p class="font-label text-xs uppercase tracking-[0.28em] text-white/70">The Digital Atelier</p>
+            <h1 class="auth-showcase-title mt-6 max-w-xl text-5xl font-bold leading-tight lg:text-6xl">Immersive German reading for learners who want more than drills.</h1>
+            <p class="auth-showcase-copy mt-6 max-w-lg text-lg text-white/80">
+              Click to translate, listen to pronunciation, save vocabulary, and turn every reading session into deliberate practice.
+            </p>
+          </div>
+          <div class="rounded-2xl bg-white/10 p-6">
+            <p class="font-label text-xs uppercase tracking-[0.24em] text-white/70">Demo Access</p>
+            <p class="mt-4 text-lg">Email: <span class="font-label font-bold">julian@archivist.app</span></p>
+            <p class="text-lg">Password: <span class="font-label font-bold">Archivist123!</span></p>
+          </div>
+        </section>
+        <section class="auth-panel flex items-center justify-center bg-background px-6 py-10 lg:px-10">
+          <div class="w-full max-w-md">
+            <div class="mb-8">
+              <p class="font-label text-xs uppercase tracking-[0.24em] text-outline">Account</p>
+              <h2 class="page-title mt-3 text-4xl font-bold text-primary">Welcome back.</h2>
+            </div>
+            <div class="mb-8 inline-flex rounded-full bg-surface-container-high p-1">
+              <button data-tab="login" class="rounded-full px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Sign In</button>
+              <button data-tab="signup" class="rounded-full px-5 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Create Account</button>
+            </div>
+            <div data-panel="login">
+              <form id="login-form" class="space-y-5">
+                <label class="block">
+                  <span class="mb-2 block font-label text-xs font-bold uppercase tracking-[0.18em] text-outline">Email</span>
+                  <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 text-lg focus:ring-1 focus:ring-primary" name="email" type="email" value="julian@archivist.app" required />
+                </label>
+                <label class="block">
+                  <span class="mb-2 block font-label text-xs font-bold uppercase tracking-[0.18em] text-outline">Password</span>
+                  <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 text-lg focus:ring-1 focus:ring-primary" name="password" type="password" value="Archivist123!" required />
+                </label>
+                <button type="submit" class="w-full rounded-xl bg-gradient-to-br from-primary to-primary-container px-5 py-4 font-label text-sm font-bold uppercase tracking-[0.22em] text-on-primary">Enter the Atelier</button>
+              </form>
+            </div>
+            <div data-panel="signup" class="hidden">
+              <form id="signup-form" class="space-y-5">
+                <label class="block">
+                  <span class="mb-2 block font-label text-xs font-bold uppercase tracking-[0.18em] text-outline">Name</span>
+                  <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 text-lg focus:ring-1 focus:ring-primary" name="name" type="text" placeholder="Clara Hoffmann" required />
+                </label>
+                <label class="block">
+                  <span class="mb-2 block font-label text-xs font-bold uppercase tracking-[0.18em] text-outline">Email</span>
+                  <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 text-lg focus:ring-1 focus:ring-primary" name="email" type="email" placeholder="clara@example.com" required />
+                </label>
+                <label class="block">
+                  <span class="mb-2 block font-label text-xs font-bold uppercase tracking-[0.18em] text-outline">Password</span>
+                  <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 text-lg focus:ring-1 focus:ring-primary" name="password" type="password" placeholder="At least 8 characters" required />
+                </label>
+                <label class="block">
+                  <span class="mb-2 block font-label text-xs font-bold uppercase tracking-[0.18em] text-outline">Current Level</span>
+                  <select class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 text-lg focus:ring-1 focus:ring-primary" name="cefrLevel">
+                    <option>A1</option>
+                    <option>A2</option>
+                    <option selected>B1</option>
+                    <option>B2</option>
+                    <option>C1</option>
+                  </select>
+                </label>
+                <button type="submit" class="w-full rounded-xl bg-gradient-to-br from-primary to-primary-container px-5 py-4 font-label text-sm font-bold uppercase tracking-[0.22em] text-on-primary">Create Account</button>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="/assets/js/auth-page.js"></script>
+  </body>
+</html>

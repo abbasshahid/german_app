@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Archivist | Admin</title>
+    <script src="/assets/js/tailwind-theme.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles/app.css" />
+  </head>
+  <body class="app-body bg-background text-on-background">
+    <div id="app-sidebar"></div>
+    <main class="app-main min-h-screen lg:ml-64">
+      <div id="app-topbar"></div>
+      <div class="page-shell px-5 pb-12 pt-8 lg:px-12">
+        <header class="page-hero hero-panel hero-panel--warm mb-10 max-w-5xl rounded-[2rem] px-8 py-10">
+          <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Admin Publishing</p>
+          <h1 class="page-title mt-3 text-5xl font-bold tracking-tight text-primary lg:text-6xl">Content Studio</h1>
+          <p class="page-copy mt-4 max-w-3xl text-xl text-on-surface-variant">
+            Create stories, essays, dialogues, and letters directly from the browser. Each upload is stored in the database and appears in the library immediately.
+          </p>
+        </header>
+
+        <div class="grid gap-8 xl:grid-cols-[minmax(0,1.15fr)_minmax(18rem,0.85fr)]">
+          <section>
+            <form id="admin-story-form" class="space-y-8">
+              <div class="admin-section-shell rounded-[1.75rem] p-7">
+                <div class="grid gap-6 md:grid-cols-2">
+                  <label class="block md:col-span-2">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Title</span>
+                    <input id="story-title" class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 text-lg focus:ring-1 focus:ring-primary" name="title" type="text" placeholder="Ein Brief aus Berlin" required />
+                  </label>
+                  <label class="block md:col-span-2">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Slug</span>
+                    <input id="story-slug" class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 font-label text-sm focus:ring-1 focus:ring-primary" name="slug" type="text" placeholder="ein-brief-aus-berlin" required />
+                  </label>
+                  <label class="block md:col-span-2">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Subtitle</span>
+                    <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 text-lg focus:ring-1 focus:ring-primary" name="subtitle" type="text" placeholder="A personal letter about life in Berlin" />
+                  </label>
+                  <label class="block md:col-span-2">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Excerpt</span>
+                    <textarea class="min-h-[110px] w-full rounded-[1.25rem] border-none bg-surface-container-low px-4 py-4 text-base leading-7 focus:ring-1 focus:ring-primary" name="excerpt" placeholder="A short summary for the library card..." required></textarea>
+                  </label>
+                  <label class="block">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Content Type</span>
+                    <select class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 font-label text-sm focus:ring-1 focus:ring-primary" name="contentType">
+                      <option value="story">Story</option>
+                      <option value="essay">Essay</option>
+                      <option value="letter">Letter</option>
+                      <option value="dialogue">Dialogue</option>
+                    </select>
+                  </label>
+                  <label class="block">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Level</span>
+                    <select class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 font-label text-sm focus:ring-1 focus:ring-primary" name="level">
+                      <option>A1</option>
+                      <option>A2</option>
+                      <option selected>B1</option>
+                      <option>B2</option>
+                      <option>C1</option>
+                    </select>
+                  </label>
+                  <label class="block">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Genre</span>
+                    <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 font-label text-sm focus:ring-1 focus:ring-primary" name="genre" type="text" placeholder="letter" required />
+                  </label>
+                  <label class="block">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Read Minutes</span>
+                    <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 font-label text-sm focus:ring-1 focus:ring-primary" name="minutes" type="number" min="1" value="6" required />
+                  </label>
+                  <label class="block">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Word Count</span>
+                    <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 font-label text-sm focus:ring-1 focus:ring-primary" name="wordCount" type="number" min="1" value="700" required />
+                  </label>
+                  <label class="block md:col-span-2">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Cover Image URL</span>
+                    <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 font-label text-sm focus:ring-1 focus:ring-primary" name="coverImageUrl" type="url" placeholder="https://..." />
+                  </label>
+                  <label class="block md:col-span-2">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Audio Narration Text</span>
+                    <textarea class="min-h-[110px] w-full rounded-[1.25rem] border-none bg-surface-container-low px-4 py-4 text-base leading-7 focus:ring-1 focus:ring-primary" name="audioText" placeholder="German narration text used for browser TTS..."></textarea>
+                  </label>
+                  <label class="block md:col-span-2">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Audio URL</span>
+                    <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 font-label text-sm focus:ring-1 focus:ring-primary" name="audioUrl" type="url" placeholder="Optional hosted audio file URL" />
+                  </label>
+                  <label class="flex items-center gap-3 md:col-span-2">
+                    <input class="rounded border-none bg-surface-container-low text-primary focus:ring-primary" name="isFeatured" type="checkbox" />
+                    <span class="font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Feature this in recommendations</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="space-y-5">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Chapters</p>
+                    <h2 class="mt-2 text-3xl font-bold text-primary">Content Blocks</h2>
+                  </div>
+                  <button id="add-chapter" type="button" class="rounded-full bg-primary px-5 py-3 font-label text-xs font-bold uppercase tracking-[0.18em] text-on-primary">Add Chapter</button>
+                </div>
+                <div id="chapters-root" class="space-y-5"></div>
+              </div>
+
+              <div class="flex flex-wrap gap-4">
+                <button type="submit" class="rounded-xl bg-gradient-to-br from-primary to-primary-container px-6 py-4 font-label text-sm font-bold uppercase tracking-[0.22em] text-on-primary">Publish Content</button>
+                <a href="/library" class="rounded-xl bg-surface-container-high px-6 py-4 font-label text-sm font-bold uppercase tracking-[0.22em] text-primary">Open Library</a>
+              </div>
+            </form>
+          </section>
+
+          <aside class="space-y-8">
+            <section class="admin-section-shell rounded-[1.75rem] p-6">
+              <div class="mb-5">
+                <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Dictionary Import</p>
+                <h2 class="mt-2 text-3xl font-bold text-primary">Bulk Lexicon Loader</h2>
+              </div>
+
+              <form id="admin-dictionary-import-form" class="space-y-5">
+                <label class="block">
+                  <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Detected Dataset</span>
+                  <div class="flex flex-col gap-3 sm:flex-row">
+                    <select id="dictionary-dataset-file" class="min-w-0 flex-1 rounded-xl border-none bg-surface-container-low px-4 py-3 font-label text-sm focus:ring-1 focus:ring-primary" name="fileName" required></select>
+                    <button id="refresh-dictionary-files" type="button" class="rounded-xl bg-surface-container-high px-4 py-3 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Refresh Files</button>
+                  </div>
+                </label>
+
+                <div class="grid gap-5 md:grid-cols-2">
+                  <label class="block">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Default CEFR</span>
+                    <select class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 font-label text-sm focus:ring-1 focus:ring-primary" name="defaultLevel">
+                      <option>A1</option>
+                      <option>A2</option>
+                      <option selected>B1</option>
+                      <option>B2</option>
+                      <option>C1</option>
+                    </select>
+                  </label>
+
+                  <label class="block">
+                    <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Entry Limit</span>
+                    <input class="w-full rounded-xl border-none bg-surface-container-low px-4 py-3 font-label text-sm focus:ring-1 focus:ring-primary" name="maxEntries" type="number" min="1" placeholder="Blank = full dataset" />
+                  </label>
+                </div>
+
+                <button type="submit" class="w-full rounded-xl bg-gradient-to-br from-secondary to-primary-container px-5 py-4 font-label text-sm font-bold uppercase tracking-[0.22em] text-on-primary">Import Dictionary Dataset</button>
+              </form>
+
+              <div id="dictionary-import-feedback" class="code-preview-shell mt-5 rounded-[1.25rem] p-4 font-mono text-xs leading-6 text-on-surface-variant">
+                Place a Kaikki German dictionary file in <strong>backend/data/imports</strong>, then refresh the file list.
+              </div>
+            </section>
+
+            <section class="admin-section-shell rounded-[1.75rem] p-6">
+              <div class="mb-5">
+                <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Dictionary Runs</p>
+                <h2 class="mt-2 text-3xl font-bold text-primary">Recent Imports</h2>
+              </div>
+              <div id="dictionary-import-history" class="space-y-4"></div>
+            </section>
+
+            <section class="admin-section-shell rounded-[1.75rem] p-6">
+              <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Payload Preview</p>
+              <pre id="payload-preview" class="code-preview-shell mt-4 overflow-x-auto rounded-[1.25rem] p-4 font-mono text-xs leading-6"></pre>
+            </section>
+
+            <section class="admin-section-shell rounded-[1.75rem] p-6">
+              <div class="mb-5">
+                <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Recent Uploads</p>
+                <h2 class="mt-2 text-3xl font-bold text-primary">Publishing History</h2>
+              </div>
+              <div id="recent-uploads" class="space-y-4"></div>
+            </section>
+
+            <section class="section-band rounded-[1.75rem] p-6">
+              <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Editorial Notes</p>
+              <ul class="mt-4 space-y-3 text-on-surface-variant">
+                <li>Use `story`, `essay`, `letter`, or `dialogue` for content type.</li>
+                <li>`slug` must be unique and URL-friendly.</li>
+                <li>Chapter HTML is rendered directly in the reader, so use clean semantic tags like `<p>`, `<figure>`, and `<span>`.</li>
+                <li>Dictionary imports expect a `.jsonl` or `.jsonl.gz` file inside `backend/data/imports`.</li>
+                <li>Kaikki German dictionary exports work best because they already include English glosses, forms, and Wikimedia audio links.</li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="/assets/js/admin-page.js"></script>
+  </body>
+</html>

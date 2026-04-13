@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Archivist | Reading</title>
+    <script src="/assets/js/tailwind-theme.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,700&family=Manrope:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/styles/app.css" />
+  </head>
+  <body class="app-body bg-background text-on-background">
+    <header class="topbar-shell sticky top-0 z-40 editorial-panel border-b border-white/70">
+      <div class="reader-topbar-inner flex items-center justify-between gap-3 px-5 py-4 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+        <div class="reader-header-main flex min-w-0 items-center gap-3 sm:gap-4">
+          <button id="reader-menu-toggle" class="reader-menu-button flex h-11 w-11 items-center justify-center rounded-full bg-primary text-on-primary lg:hidden" type="button" aria-label="Open reading menu">
+            <span class="material-symbols-outlined">menu</span>
+          </button>
+          <a id="reader-back" class="hidden items-center gap-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-outline hover:text-primary lg:inline-flex">
+            <span class="material-symbols-outlined text-lg">arrow_back</span>
+            Exit to Library
+          </a>
+          <div class="hidden h-6 w-px bg-outline-variant/40 lg:block"></div>
+          <div class="min-w-0">
+            <p class="hidden font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline lg:block">Reading Mode</p>
+            <h1 class="reader-mobile-page-name truncate text-lg font-bold text-primary lg:hidden">Reading</h1>
+            <h1 id="reader-title-bar" class="hidden text-2xl font-bold text-primary lg:block"></h1>
+          </div>
+        </div>
+        <div class="reader-header-actions flex items-center gap-3">
+          <div class="reader-toolbar hidden flex-wrap items-center gap-3 lg:flex">
+          <button id="story-replay" class="rounded-full bg-surface-container-low px-4 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Replay</button>
+          <button id="story-play" class="rounded-full bg-primary px-4 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-on-primary">Play Audio</button>
+          <select id="story-speed" class="rounded-full bg-surface-container-low px-4 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">
+            <option value="0.75">0.75x</option>
+            <option value="1" selected>1.0x</option>
+            <option value="1.15">1.15x</option>
+            <option value="1.25">1.25x</option>
+          </select>
+          </div>
+          <img id="reader-avatar" class="h-10 w-10 rounded-full object-cover" alt="User avatar" />
+        </div>
+      </div>
+    </header>
+
+    <div id="reader-menu-backdrop" class="reader-menu-backdrop lg:hidden" aria-hidden="true"></div>
+    <section id="reader-menu-panel" class="reader-menu-panel lg:hidden" aria-label="Reading menu">
+      <div class="reader-menu-sheet editorial-panel">
+        <div class="mb-4 flex items-center justify-between gap-3">
+          <div>
+            <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Reading Menu</p>
+            <h2 class="mt-1 text-lg font-bold text-primary">Quick Tools</h2>
+          </div>
+          <button id="reader-menu-close" class="reader-menu-close flex h-10 w-10 items-center justify-center rounded-full bg-white/35 text-primary" type="button" aria-label="Close reading menu">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <a id="reader-back-mobile" href="/library" class="reader-menu-link mb-4 flex items-center justify-between rounded-2xl px-4 py-3 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">
+          Back to Library
+          <span class="material-symbols-outlined text-lg">arrow_forward</span>
+        </a>
+        <div class="grid gap-3 sm:grid-cols-[minmax(0,1fr)_8rem]">
+          <button id="story-play-mobile" class="rounded-2xl bg-primary px-4 py-3 font-label text-xs font-bold uppercase tracking-[0.18em] text-on-primary">Play Audio</button>
+          <label class="rounded-2xl bg-white/40 px-4 py-3">
+            <span class="mb-2 block font-label text-[10px] font-bold uppercase tracking-[0.18em] text-outline">Speed</span>
+            <select id="story-speed-mobile" class="w-full rounded-xl border-none bg-white/70 px-3 py-2 font-label text-xs font-bold uppercase tracking-[0.14em] text-primary focus:ring-1 focus:ring-primary">
+              <option value="0.75">0.75x</option>
+              <option value="1" selected>1.0x</option>
+              <option value="1.15">1.15x</option>
+              <option value="1.25">1.25x</option>
+            </select>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <main class="reader-shell app-main grid gap-8 px-5 py-8 lg:grid-cols-[minmax(0,1fr)_24rem] lg:px-8">
+      <article id="reader-article" class="reader-article reader-article-shell mx-auto w-full max-w-3xl rounded-[2rem] px-6 py-7 lg:px-9 lg:py-9">
+        <p id="chapter-label" class="font-label text-xs font-bold uppercase tracking-[0.24em] text-secondary"></p>
+        <h2 id="story-title" class="reader-story-title mt-4 text-3xl font-bold tracking-tight text-primary lg:text-5xl"></h2>
+        <h3 id="chapter-title" class="reader-chapter-title mt-4 text-lg italic text-on-surface-variant lg:text-2xl"></h3>
+        <div id="reader-content" class="reader-copy mt-10"></div>
+        <div class="mt-12 border-t border-surface-container-low pt-8">
+          <div class="mb-5 flex items-center gap-4">
+            <div class="h-1.5 flex-1 bg-surface-container-high">
+              <div id="reading-progress-bar" class="h-full bg-secondary"></div>
+            </div>
+            <span id="reading-progress-label" class="font-label text-xs font-bold uppercase tracking-[0.18em] text-outline"></span>
+          </div>
+          <div class="reader-progress-actions flex items-center justify-between">
+            <button id="chapter-prev" class="rounded-xl bg-surface-container-low px-5 py-3 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary">Previous Chapter</button>
+            <button id="chapter-next" class="rounded-xl bg-primary px-5 py-3 font-label text-xs font-bold uppercase tracking-[0.18em] text-on-primary">Next Chapter</button>
+          </div>
+        </div>
+      </article>
+
+      <div id="dictionary-backdrop" class="reader-dictionary-backdrop lg:hidden" aria-hidden="true"></div>
+
+      <aside id="dictionary-panel" class="reader-dictionary-panel lg:sticky lg:top-28 lg:self-start">
+        <div class="reader-dictionary-sheet dictionary-shell editorial-panel rounded-[1.75rem] p-6">
+          <div class="mb-6 flex items-start justify-between gap-4">
+            <div>
+              <h3 id="dictionary-word" class="text-2xl font-bold text-primary lg:text-3xl">alten</h3>
+              <p id="dictionary-pos" class="mt-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-secondary"></p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button id="dictionary-close" class="reader-dictionary-close flex h-11 w-11 items-center justify-center rounded-full bg-surface-container-low text-primary lg:hidden" type="button" aria-label="Close meaning panel">
+                <span class="material-symbols-outlined">close</span>
+              </button>
+              <button id="dictionary-audio" class="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-on-primary">
+                <span class="material-symbols-outlined">volume_up</span>
+              </button>
+            </div>
+          </div>
+
+          <section class="space-y-6">
+            <div>
+              <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Translation</p>
+              <p id="dictionary-meaning" class="dictionary-meaning-text mt-2 text-lg leading-7 text-on-surface lg:text-xl lg:leading-8"></p>
+            </div>
+            <div class="rounded-2xl bg-surface-container-lowest p-5 shadow-editorial">
+              <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Example</p>
+              <p id="dictionary-example-de" class="mt-4 text-base italic leading-7 text-primary lg:text-lg lg:leading-8"></p>
+              <p id="dictionary-example-en" class="mt-3 font-label text-sm text-on-surface-variant"></p>
+            </div>
+            <div>
+              <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Notes</p>
+              <p id="dictionary-notes" class="dictionary-note-text mt-3 font-label text-sm leading-7 text-on-surface-variant"></p>
+            </div>
+            <button id="dictionary-save" class="w-full rounded-xl bg-primary px-5 py-4 font-label text-sm font-bold uppercase tracking-[0.2em] text-on-primary">Add to Vocabulary List</button>
+            <div>
+              <p class="font-label text-[10px] font-bold uppercase tracking-[0.24em] text-outline">Related Words</p>
+              <div id="dictionary-related" class="mt-4 flex flex-wrap gap-3"></div>
+            </div>
+          </section>
+        </div>
+      </aside>
+    </main>
+    <script type="module" src="/assets/js/reading-page.js"></script>
+  </body>
+</html>
