@@ -3,6 +3,10 @@ let activeAudio = null;
 export function stopAudio() {
   if (activeAudio) {
     window.speechSynthesis.cancel();
+    if (activeAudio instanceof HTMLAudioElement) {
+      activeAudio.pause();
+      activeAudio.currentTime = 0;
+    }
     activeAudio = null;
   }
 }
@@ -13,8 +17,18 @@ export function playAudio(payload, { rate = 1 } = {}) {
   }
 
   if (payload.audioUrl) {
+    stopAudio();
     const audio = new Audio(payload.audioUrl);
-    audio.play();
+    audio.playbackRate = rate;
+    activeAudio = audio;
+    audio.addEventListener("ended", () => {
+      if (activeAudio === audio) {
+        activeAudio = null;
+      }
+    });
+    audio.play().catch(() => {
+      activeAudio = null;
+    });
     return;
   }
 

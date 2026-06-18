@@ -1,7 +1,7 @@
 import { api } from "./api.js";
 import { playAudio } from "./audio.js";
 import { ensureAuthenticated } from "./session.js";
-import { setBusy, showToast } from "./ui.js";
+import { escapeHtml, setBusy, showToast } from "./ui.js";
 
 const session = await ensureAuthenticated();
 const slug = window.location.pathname.split("/").pop();
@@ -40,6 +40,9 @@ let storyPayload = null;
 let currentLookup = null;
 let activeWordElement = null;
 let lastSyncedProgress = 0;
+let syncedStudyMinutes = 0;
+let saveInFlight = false;
+const readingStartedAt = Date.now();
 
 backLink.href = "/library";
 if (backLinkMobile) {
@@ -108,19 +111,40 @@ function syncPlaybackSpeed(source) {
   }
 }
 
-function openGoogleMeaningSearch(word) {
+function buildGoogleMeaningSearchUrl(word) {
   const url = new URL("https://www.google.com/search");
   url.searchParams.set("q", `${word} meaning in english`);
-  window.open(url.toString(), "_blank", "noopener,noreferrer");
+  return url.toString();
 }
 
 function renderDictionaryFallback(word, message) {
+  saveButton.textContent = "Add to Vocabulary List";
   dictionaryWord.textContent = word;
   dictionaryPos.textContent = "External lookup";
   dictionaryMeaning.textContent = "This word is not yet available in the built-in dictionary.";
   dictionaryExampleDe.textContent = word;
   dictionaryExampleEn.textContent = "";
   dictionaryNotes.textContent = message;
+  dictionaryRelated.innerHTML = "";
+  const searchLink = document.createElement("a");
+  searchLink.className =
+    "rounded-full bg-surface-container-high px-4 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary";
+  searchLink.href = buildGoogleMeaningSearchUrl(word);
+  searchLink.target = "_blank";
+  searchLink.rel = "noopener noreferrer";
+  searchLink.textContent = "Search web";
+  dictionaryRelated.append(searchLink);
+  setDictionaryActionsEnabled(false);
+}
+
+function renderDictionaryEmptyState() {
+  saveButton.textContent = "Add to Vocabulary List";
+  dictionaryWord.textContent = "Select a word";
+  dictionaryPos.textContent = "Reader dictionary";
+  dictionaryMeaning.textContent = "Tap any highlighted word in the reading to see its meaning, example, notes, and audio.";
+  dictionaryExampleDe.textContent = "";
+  dictionaryExampleEn.textContent = "";
+  dictionaryNotes.textContent = "The local dictionary works without cloud storage and grows as new seed entries or imports are added.";
   dictionaryRelated.innerHTML = "";
   setDictionaryActionsEnabled(false);
 }
@@ -196,12 +220,12 @@ async function loadStory() {
   nextButton.disabled = !next;
   prevButton.onclick = () => {
     if (previous) {
-      window.location.href = `/read/${slug}?chapter=${previous.chapter_number}`;
+      window.location.href = `/read/${slug}?chapter=${previous.chapterNumber}`;
     }
   };
   nextButton.onclick = () => {
     if (next) {
-      window.location.href = `/read/${slug}?chapter=${next.chapter_number}`;
+      window.location.href = `/read/${slug}?chapter=${next.chapterNumber}`;
     }
   };
 
@@ -226,13 +250,17 @@ async function lookupWord(word, sourceElement, { openPanel = true } = {}) {
     activeWordElement.classList.add("is-active");
 
     dictionaryWord.textContent = currentLookup.lookup;
+    saveButton.textContent = "Add to Vocabulary List";
     dictionaryPos.textContent = currentLookup.partOfSpeech;
     dictionaryMeaning.textContent = currentLookup.translation;
     dictionaryExampleDe.textContent = currentLookup.example.german;
     dictionaryExampleEn.textContent = currentLookup.example.english;
     dictionaryNotes.textContent = currentLookup.grammarNotes;
     dictionaryRelated.innerHTML = currentLookup.relatedWords
-      .map((item) => `<button class="rounded-full bg-surface-container-high px-4 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary" data-related-word="${item}">${item}</button>`)
+      .map(
+        (item) =>
+          `<button class="rounded-full bg-surface-container-high px-4 py-2 font-label text-xs font-bold uppercase tracking-[0.18em] text-primary" data-related-word="${escapeHtml(item)}">${escapeHtml(item)}</button>`
+      )
       .join("");
     setDictionaryActionsEnabled(true);
     if (openPanel) {
@@ -251,13 +279,12 @@ async function lookupWord(word, sourceElement, { openPanel = true } = {}) {
     if (error.status === 404) {
       renderDictionaryFallback(
         word,
-        "A Google search for the English meaning has been opened in a new tab so you can still continue reading without interruption."
+        "This word is not yet available in the local dictionary. Use the web-search shortcut below only if you want an external lookup."
       );
       if (openPanel) {
         openDictionaryPanel();
       }
-      openGoogleMeaningSearch(word);
-      showToast(`"${word}" was not in the local dictionary. Opened Google in a new tab.`, "info");
+      showToast(`"${word}" is not in the local dictionary yet.`, "info");
       return;
     }
 
@@ -320,11 +347,13 @@ wordAudioButton.addEventListener("click", () => {
 });
 
 saveButton.addEventListener("click", async () => {
-  if (!currentLookup) {
+  if (!currentLookup || saveInFlight) {
     showToast("Select a word first.", "error");
     return;
   }
 
+  saveInFlight = true;
+  let wasSaved = false;
   setBusy(saveButton, true, "Saving...");
 
   try {
@@ -337,10 +366,15 @@ saveButton.addEventListener("click", async () => {
     });
 
     showToast(`${currentLookup.lookup} saved to your vocabulary list.`, "success");
+    wasSaved = true;
   } catch (error) {
     showToast(error.message, "error");
   } finally {
     setBusy(saveButton, false);
+    if (wasSaved) {
+      saveButton.textContent = "Saved to Vocabulary";
+    }
+    saveInFlight = false;
   }
 });
 
@@ -375,6 +409,9 @@ async function syncProgress(progressPercent, keepalive = false) {
   }
 
   lastSyncedProgress = progressPercent;
+  const elapsedStudyMinutes = Math.floor((Date.now() - readingStartedAt) / 60_000);
+  const minutesStudied = Math.max(0, elapsedStudyMinutes - syncedStudyMinutes);
+  syncedStudyMinutes = elapsedStudyMinutes;
 
   await fetch("/api/progress/reading", {
     method: "POST",
@@ -387,7 +424,7 @@ async function syncProgress(progressPercent, keepalive = false) {
       storyId: storyPayload.id,
       chapterId: storyPayload.activeChapter.id,
       progressPercent,
-      minutesStudied: 2
+      minutesStudied
     })
   }).catch(() => {});
 }
@@ -409,10 +446,4 @@ window.addEventListener("beforeunload", () => {
 });
 
 await loadStory();
-setDictionaryActionsEnabled(false);
-await lookupWord(
-  "alten",
-  Array.from(document.querySelectorAll(".word-interact")).find((element) => element.dataset.word?.toLowerCase() === "alten") ||
-    document.querySelector(".word-interact"),
-  { openPanel: false }
-);
+renderDictionaryEmptyState();

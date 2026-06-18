@@ -195,10 +195,12 @@ function renderDictionaryFileOptions(items) {
       <option value="">No dataset files found in backend/data/imports</option>
     `;
     dictionaryDatasetSelect.disabled = true;
+    dictionaryImportButton.disabled = true;
     return;
   }
 
   dictionaryDatasetSelect.disabled = false;
+  dictionaryImportButton.disabled = false;
   dictionaryDatasetSelect.innerHTML = items
     .map(
       (item) => `
@@ -208,6 +210,12 @@ function renderDictionaryFileOptions(items) {
       `
     )
     .join("");
+}
+
+function setDictionaryImportDisabled(disabled) {
+  dictionaryDatasetSelect.disabled = disabled;
+  dictionaryImportButton.disabled = disabled;
+  refreshDictionaryFilesButton.disabled = disabled;
 }
 
 function renderDictionaryImportHistory(items) {
@@ -259,6 +267,15 @@ async function loadUploads() {
 
 async function loadDictionaryFiles() {
   const response = await api.get("/api/admin/dictionary/files");
+
+  if (response.disabled) {
+    setDictionaryImportDisabled(true);
+    dictionaryDatasetSelect.innerHTML = `<option value="">Runtime imports disabled on Vercel</option>`;
+    setDictionaryImportFeedback(response.message, "neutral");
+    return;
+  }
+
+  setDictionaryImportDisabled(false);
   renderDictionaryFileOptions(response.items);
 
   if (!response.items.length) {

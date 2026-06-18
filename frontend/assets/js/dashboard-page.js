@@ -15,11 +15,10 @@ mountShell({
     eyebrow: "The Digital Atelier",
     title: "Dashboard",
     tabs: [
-      { label: "Reading Mode", href: "/library", active: false },
-      { label: "Audio", href: "/library", active: false },
+      { label: "Library", href: "/library", active: false },
+      { label: "Vocabulary", href: "/vocabulary", active: false },
       { label: "Review", href: "/flashcards", active: true }
-    ],
-    searchPlaceholder: "Search the archive..."
+    ]
   }
 });
 

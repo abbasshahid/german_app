@@ -23,9 +23,9 @@ export function upsertStoryProgress(progress) {
       )
       ON CONFLICT(user_id, story_id, chapter_id)
       DO UPDATE SET
-        progress_percent = excluded.progress_percent,
+        progress_percent = MAX(story_progress.progress_percent, excluded.progress_percent),
         last_read_at = excluded.last_read_at,
-        completed_at = excluded.completed_at
+        completed_at = COALESCE(story_progress.completed_at, excluded.completed_at)
     `,
     progress
   );

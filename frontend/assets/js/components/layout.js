@@ -1,4 +1,5 @@
 import { logout } from "../session.js";
+import { escapeHtml } from "../ui.js";
 
 function getNavItems(user) {
   const items = [
@@ -32,9 +33,9 @@ function renderSidebarContent(user, activeNav, items, { showBrand = true, showLo
           .map((item) => {
             const isActive = item.key === activeNav;
             return `
-              <a href="${item.href}" class="sidebar-nav-link ${isActive ? "is-active font-bold" : ""} flex items-center gap-3 px-4 py-3 rounded-lg transition-colors">
-                <span class="material-symbols-outlined">${item.icon}</span>
-                <span class="text-base lg:text-lg font-medium">${item.label}</span>
+              <a href="${escapeHtml(item.href)}" class="sidebar-nav-link ${isActive ? "is-active font-bold" : ""} flex items-center gap-3 px-4 py-3 rounded-lg transition-colors">
+                <span class="material-symbols-outlined">${escapeHtml(item.icon)}</span>
+                <span class="text-base lg:text-lg font-medium">${escapeHtml(item.label)}</span>
               </a>
             `;
           })
@@ -42,10 +43,10 @@ function renderSidebarContent(user, activeNav, items, { showBrand = true, showLo
       </nav>
       <div class="sidebar-profile mt-auto rounded-xl p-4">
         <div class="flex items-center gap-3 mb-4">
-          <img class="h-10 w-10 rounded-full object-cover" src="${user.avatarUrl || "https://placehold.co/80x80"}" alt="${user.name}" />
+          <img class="h-10 w-10 rounded-full object-cover" src="${escapeHtml(user.avatarUrl || "https://placehold.co/80x80")}" alt="${escapeHtml(user.name)}" />
           <div>
-            <p class="text-sm font-bold text-[#fff6ea]">${user.name}</p>
-            <p class="font-label text-xs uppercase tracking-widest text-[#eedfca]/70">${user.cefrLevel} ${user.role}</p>
+            <p class="text-sm font-bold text-[#fff6ea]">${escapeHtml(user.name)}</p>
+            <p class="font-label text-xs uppercase tracking-widest text-[#eedfca]/70">${escapeHtml(user.cefrLevel)} ${escapeHtml(user.role)}</p>
           </div>
         </div>
         <a href="/library" class="sidebar-cta block w-full text-center py-3 rounded-lg text-on-primary font-label text-sm font-bold uppercase tracking-widest">Start Daily Lesson</a>
@@ -91,10 +92,13 @@ function renderTopbar(config, user) {
   const tabLinks = (config.tabs || [])
     .map(
       (tab) => `
-        <a href="${tab.href}" class="font-label text-xs font-bold uppercase tracking-[0.2em] ${tab.active ? "text-primary border-b-2 border-primary pb-1" : "text-outline hover:text-primary"}">${tab.label}</a>
+        <a href="${escapeHtml(tab.href)}" class="font-label text-xs font-bold uppercase tracking-[0.2em] ${tab.active ? "text-primary border-b-2 border-primary pb-1" : "text-outline hover:text-primary"}">${escapeHtml(tab.label)}</a>
       `
     )
     .join("");
+  const searchInput = config.searchPlaceholder
+    ? `<input data-shell-search class="shell-search w-full rounded-full px-4 py-2.5 font-label text-sm outline-none focus:ring-1 focus:ring-primary" placeholder="${escapeHtml(config.searchPlaceholder)}" />`
+    : "";
 
   return `
     <header class="topbar-shell sticky top-0 z-40 editorial-panel border-b border-white/60">
@@ -104,21 +108,22 @@ function renderTopbar(config, user) {
               <span class="material-symbols-outlined">menu</span>
             </button>
             <div class="min-w-0">
-              <p class="hidden font-label text-[10px] uppercase tracking-[0.24em] text-outline lg:block">${config.eyebrow || "The Digital Atelier"}</p>
-              <h2 class="truncate text-lg sm:text-xl lg:text-2xl font-bold text-primary">${config.title}</h2>
+              <p class="hidden font-label text-[10px] uppercase tracking-[0.24em] text-outline lg:block">${escapeHtml(config.eyebrow || "The Digital Atelier")}</p>
+              <h2 class="truncate text-lg sm:text-xl lg:text-2xl font-bold text-primary">${escapeHtml(config.title)}</h2>
             </div>
             ${tabLinks ? `<nav class="hidden xl:flex items-center gap-5">${tabLinks}</nav>` : ""}
           </div>
           <div class="flex items-center gap-3">
             ${
               config.searchPlaceholder
-                ? `<input data-shell-search class="shell-search hidden w-full rounded-full px-4 py-2.5 font-label text-sm outline-none focus:ring-1 focus:ring-primary lg:block lg:min-w-[14rem] lg:w-64" placeholder="${config.searchPlaceholder}" />`
+                ? `<div class="hidden lg:block lg:min-w-[14rem] lg:w-64">${searchInput}</div>`
                 : ""
             }
             <button data-logout class="shell-signout hidden rounded-full px-4 py-2.5 font-label text-xs font-bold uppercase tracking-[0.2em] text-on-primary lg:inline-flex">Sign Out</button>
-            <img class="topbar-avatar h-10 w-10 rounded-full object-cover ring-1 ring-white/60" src="${user.avatarUrl || "https://placehold.co/80x80"}" alt="${user.name}" />
+            <img class="topbar-avatar h-10 w-10 rounded-full object-cover ring-1 ring-white/60" src="${escapeHtml(user.avatarUrl || "https://placehold.co/80x80")}" alt="${escapeHtml(user.name)}" />
           </div>
       </div>
+      ${searchInput ? `<div class="px-4 pb-3 sm:px-5 lg:hidden">${searchInput}</div>` : ""}
     </header>
   `;
 }

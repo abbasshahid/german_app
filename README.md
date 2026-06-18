@@ -7,6 +7,7 @@ Production-oriented full-stack scaffold built from the Stitch HTML screens in th
 - `frontend/` contains the maintainable app screens and browser-side modules.
 - `backend/` contains the Express API, auth/session handling, SQLite persistence, and seed data.
 - `docs/architecture.md` captures the screen analysis, backend plan, schema, and API contract.
+- The seeded library includes 25 readings: 5 resources each for A1, A2, B1, B2, and C1.
 
 ## Main Flows
 
@@ -17,7 +18,7 @@ Production-oriented full-stack scaffold built from the Stitch HTML screens in th
 - Vocabulary lexicon at `/vocabulary`
 - Flashcard review at `/flashcards`
 - Admin content studio at `/admin` for creating stories, essays, letters, and dialogues
-- Bulk dictionary imports from Kaikki/Wiktextract datasets via `/admin`
+- Local-only bulk dictionary imports from Kaikki/Wiktextract datasets via `/admin`
 
 ## Run Locally
 
@@ -39,6 +40,8 @@ This repo exports the Express app from `api/index.js` and rewrites all app route
 
 No cloud storage is required. On Vercel, the SQLite database is created in `/tmp/archivist-data`, so it is ephemeral: demo data is seeded automatically, but new users, sessions, saved words, imports, and admin edits can reset whenever Vercel replaces the serverless instance.
 
+The deployed Vercel app is therefore a resettable demo. Runtime dictionary imports are disabled on Vercel because imported files and SQLite writes are not durable there. To ship more dictionary data without cloud storage, add it to `backend/src/data/seed.js` before deploying.
+
 Use Node 22.5 or newer because the app uses Node's built-in `node:sqlite`.
 
 ## Stack
@@ -51,10 +54,12 @@ Use Node 22.5 or newer because the app uses Node's built-in `node:sqlite`.
 
 ## Bulk Dictionary Import
 
+Bulk imports are intended for local development or a durable server environment. They are disabled on Vercel free/no-storage deployments.
+
 The admin screen can now import open German dictionary datasets in bulk instead of adding entries word by word.
 
 1. Download a Kaikki German dictionary dataset in `.jsonl` or `.jsonl.gz` format.
-2. Place the file inside `backend/data/imports/`.
+2. Place the `.jsonl` or `.jsonl.gz` file inside `backend/data/imports/`.
 3. Start the app with `npm run dev`.
 4. Sign in as the admin user and open `http://localhost:3000/admin`.
 5. In the `Bulk Lexicon Loader` panel, refresh the file list and run the import.

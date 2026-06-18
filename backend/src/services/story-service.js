@@ -9,7 +9,7 @@ import {
   listStories,
   listStoryChapters
 } from "../models/story-model.js";
-import { notFound } from "../utils/http-error.js";
+import { badRequest, conflict, notFound } from "../utils/http-error.js";
 import { createId } from "../utils/ids.js";
 import { nowIso } from "../utils/time.js";
 import { stripHtml } from "../utils/strings.js";
@@ -30,6 +30,16 @@ function mapStorySummary(story) {
     coverImageUrl: story.cover_image_url,
     isFeatured: Boolean(story.is_featured)
   };
+}
+
+function mapChapterSummary(chapter) {
+  return chapter
+    ? {
+        id: chapter.id,
+        chapterNumber: chapter.chapter_number,
+        title: chapter.title
+      }
+    : null;
 }
 
 export function getStoryLibrary(filters) {
@@ -104,11 +114,7 @@ export function getStoryDetail(slug, chapterNumber, userId) {
   return {
     ...mapStorySummary(story),
     audio: getStoryAudio(story),
-    chapters: chapters.map((chapter) => ({
-      id: chapter.id,
-      chapterNumber: chapter.chapter_number,
-      title: chapter.title
-    })),
+    chapters: chapters.map(mapChapterSummary),
     activeChapter: {
       id: activeChapter.id,
       chapterNumber: activeChapter.chapter_number,
@@ -118,8 +124,10 @@ export function getStoryDetail(slug, chapterNumber, userId) {
       plainText: stripHtml(activeChapter.content_html)
     },
     navigation: {
-      previousChapter: chapters.find((chapter) => chapter.chapter_number === activeChapter.chapter_number - 1) ?? null,
-      nextChapter: chapters.find((chapter) => chapter.chapter_number === activeChapter.chapter_number + 1) ?? null
+      previousChapter: mapChapterSummary(
+        chapters.find((chapter) => chapter.chapter_number === activeChapter.chapter_number - 1)
+      ),
+      nextChapter: mapChapterSummary(chapters.find((chapter) => chapter.chapter_number === activeChapter.chapter_number + 1))
     },
     progress: {
       percent: progress?.progress_percent ?? 0,
@@ -129,6 +137,15 @@ export function getStoryDetail(slug, chapterNumber, userId) {
 }
 
 export function createStoryDraft(payload) {
+  if (getStoryBySlug(payload.slug)) {
+    throw conflict("A story with this slug already exists.");
+  }
+
+  const chapterNumbers = payload.chapters.map((chapter) => chapter.chapterNumber);
+  if (new Set(chapterNumbers).size !== chapterNumbers.length) {
+    throw badRequest("Chapter numbers must be unique.");
+  }
+
   const timestamp = nowIso();
   const story = createStory({
     id: createId("story"),

@@ -4,7 +4,6 @@ import readline from "node:readline";
 import zlib from "node:zlib";
 
 import { dictionaryImportDirectory, ensureDataDirectories } from "../config/storage-paths.js";
-import { db } from "../database/db.js";
 import {
   createDictionaryImportRun,
   listDictionaryImportRuns,
@@ -19,16 +18,20 @@ import {
   updateImportableAudioAsset,
   updateImportableDictionaryEntry
 } from "../models/dictionary-import-model.js";
-import { badRequest } from "../utils/http-error.js";
+import { badRequest, conflict } from "../utils/http-error.js";
 import { createId } from "../utils/ids.js";
 import { logger } from "../utils/logger.js";
 import { nowIso } from "../utils/time.js";
 import { normalizeWord } from "../utils/strings.js";
 
-const SUPPORTED_FILE_SUFFIXES = [".jsonl", ".json", ".jsonl.gz"];
+const SUPPORTED_FILE_SUFFIXES = [".jsonl", ".jsonl.gz"];
 const IMPORT_SOURCE = "kaikki-german-dictionary";
 const MAX_RELATED_WORDS = 8;
 const DEFAULT_IMPORT_LIMIT = 0;
+const VERCEL_IMPORT_DISABLED_MESSAGE =
+  "Runtime dictionary imports are disabled on Vercel because free serverless storage is temporary. Add dictionary entries to seed data locally, or run imports outside Vercel before deployment.";
+
+let importInProgress = false;
 
 const POS_LABELS = {
   noun: "Nomen",
@@ -260,6 +263,10 @@ function isGermanRecord(record) {
 }
 
 function resolveImportFilePath(fileName) {
+  if (process.env.VERCEL) {
+    throw badRequest(VERCEL_IMPORT_DISABLED_MESSAGE);
+  }
+
   ensureDataDirectories();
 
   const normalizedName = path.basename(cleanText(fileName));
@@ -273,7 +280,7 @@ function resolveImportFilePath(fileName) {
   }
 
   if (!SUPPORTED_FILE_SUFFIXES.some((suffix) => normalizedName.toLowerCase().endsWith(suffix))) {
-    throw badRequest("Only .jsonl, .json, and .jsonl.gz dictionary datasets are supported.");
+    throw badRequest("Only .jsonl and .jsonl.gz dictionary datasets are supported.");
   }
 
   return {
@@ -449,6 +456,10 @@ async function streamDictionaryFile(absolutePath, handleRecord) {
 }
 
 export function listAvailableDictionaryImportFiles() {
+  if (process.env.VERCEL) {
+    return [];
+  }
+
   ensureDataDirectories();
 
   return fs
@@ -464,8 +475,15 @@ export function listAvailableDictionaryImportFiles() {
         modifiedAt: stats.mtime.toISOString()
       };
     })
-    .filter((item) => item.fileName.endsWith(".jsonl") || item.fileName.endsWith(".jsonl.gz") || item.fileName.endsWith(".json"))
+    .filter((item) => item.fileName.endsWith(".jsonl") || item.fileName.endsWith(".jsonl.gz"))
     .sort((left, right) => right.modifiedAt.localeCompare(left.modifiedAt));
+}
+
+export function getDictionaryImportAvailability() {
+  return {
+    disabled: Boolean(process.env.VERCEL),
+    message: process.env.VERCEL ? VERCEL_IMPORT_DISABLED_MESSAGE : null
+  };
 }
 
 export function getDictionaryImportHistory() {
@@ -473,6 +491,16 @@ export function getDictionaryImportHistory() {
 }
 
 export async function importDictionaryDataset(userId, payload) {
+  if (process.env.VERCEL) {
+    throw badRequest(VERCEL_IMPORT_DISABLED_MESSAGE);
+  }
+
+  if (importInProgress) {
+    throw conflict("A dictionary import is already running. Wait for it to finish before starting another one.");
+  }
+
+  importInProgress = true;
+
   const timestamp = nowIso();
   const { fileName, absolutePath } = resolveImportFilePath(payload.fileName);
   const importRunId = createId("import");
@@ -513,8 +541,6 @@ export async function importDictionaryDataset(userId, payload) {
   });
 
   try {
-    db.exec("BEGIN");
-
     await streamDictionaryFile(absolutePath, (record) => {
       if (maxEntries > 0 && summary.processedRows >= maxEntries) {
         return false;
@@ -536,8 +562,6 @@ export async function importDictionaryDataset(userId, payload) {
       upsertDictionaryRow(row, payload.defaultLevel, nowIso(), summary);
       return true;
     });
-
-    db.exec("COMMIT");
 
     const completedAt = nowIso();
     const finalSummary = {
@@ -564,8 +588,6 @@ export async function importDictionaryDataset(userId, payload) {
 
     return finalSummary;
   } catch (error) {
-    db.exec("ROLLBACK");
-
     const completedAt = nowIso();
     const failedSummary = {
       ...summary,
@@ -593,5 +615,7 @@ export async function importDictionaryDataset(userId, payload) {
     });
 
     throw badRequest(`Dictionary import failed: ${error.message}`);
+  } finally {
+    importInProgress = false;
   }
 }

@@ -15,8 +15,8 @@ mountShell({
     eyebrow: "The Digital Atelier",
     title: "Flashcard Review",
     tabs: [
-      { label: "Reading Mode", href: "/library", active: false },
-      { label: "Audio", href: "/library", active: false },
+      { label: "Library", href: "/library", active: false },
+      { label: "Vocabulary", href: "/vocabulary", active: false },
       { label: "Review", href: "/flashcards", active: true }
     ]
   }
@@ -24,6 +24,7 @@ mountShell({
 
 let sessionPayload = await api.get("/api/flashcards/session", { limit: 20 });
 let currentIndex = 0;
+let reviewInFlight = false;
 
 const emptyState = document.querySelector("#flashcard-empty");
 const cardState = document.querySelector("#flashcard-state");
@@ -70,10 +71,14 @@ document.querySelectorAll("[data-rating]").forEach((button) => {
   button.addEventListener("click", async () => {
     const card = currentCard();
 
-    if (!card) {
+    if (!card || reviewInFlight) {
       return;
     }
 
+    reviewInFlight = true;
+    document.querySelectorAll("[data-rating]").forEach((element) => {
+      element.disabled = true;
+    });
     setBusy(button, true, "Saving...");
 
     try {
@@ -88,6 +93,10 @@ document.querySelectorAll("[data-rating]").forEach((button) => {
       showToast(error.message, "error");
     } finally {
       setBusy(button, false);
+      document.querySelectorAll("[data-rating]").forEach((element) => {
+        element.disabled = false;
+      });
+      reviewInFlight = false;
     }
   });
 });

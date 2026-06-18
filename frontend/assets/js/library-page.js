@@ -14,8 +14,8 @@ mountShell({
     eyebrow: "The Digital Atelier",
     title: "Story Library",
     tabs: [
-      { label: "Reading Mode", href: "/library", active: true },
-      { label: "Audio", href: "/library", active: false },
+      { label: "Library", href: "/library", active: true },
+      { label: "Vocabulary", href: "/vocabulary", active: false },
       { label: "Review", href: "/flashcards", active: false }
     ],
     searchPlaceholder: "Search the archives..."
@@ -34,7 +34,7 @@ const grid = document.querySelector("#library-grid");
 const pagination = document.querySelector("#library-pagination");
 const nextPageButton = document.querySelector("#next-page");
 const filterButtons = document.querySelectorAll("[data-filter-group]");
-const searchInput = document.querySelector("[data-shell-search]");
+const searchInputs = document.querySelectorAll("[data-shell-search]");
 
 async function loadStories() {
   const payload = await api.get("/api/stories", {
@@ -45,10 +45,15 @@ async function loadStories() {
     page: state.page
   });
 
-  grid.innerHTML = payload.items.map(renderStoryCard).join("");
-  pagination.textContent = `Archive Navigation: Page ${payload.pagination.page} of ${payload.pagination.totalPages}`;
+  if (state.page === 1) {
+    grid.innerHTML = "";
+  }
+
+  grid.insertAdjacentHTML("beforeend", payload.items.map(renderStoryCard).join(""));
+  pagination.textContent = `${grid.children.length} of ${payload.pagination.total} resources loaded`;
   nextPageButton.disabled = payload.pagination.page >= payload.pagination.totalPages;
   nextPageButton.classList.toggle("opacity-50", nextPageButton.disabled);
+  nextPageButton.textContent = nextPageButton.disabled ? "All Resources Loaded" : "Load More";
 }
 
 function syncChips() {
@@ -70,10 +75,17 @@ filterButtons.forEach((button) => {
   });
 });
 
-searchInput?.addEventListener("input", (event) => {
-  state.search = event.target.value.trim();
-  state.page = 1;
-  loadStories();
+searchInputs.forEach((input) => {
+  input.addEventListener("input", (event) => {
+    state.search = event.target.value.trim();
+    searchInputs.forEach((otherInput) => {
+      if (otherInput !== input) {
+        otherInput.value = event.target.value;
+      }
+    });
+    state.page = 1;
+    loadStories();
+  });
 });
 
 nextPageButton.addEventListener("click", () => {

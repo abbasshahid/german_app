@@ -1,7 +1,9 @@
 import { createAdminUpload, listAdminUploads } from "../models/admin-model.js";
+import { withTransaction } from "../models/base-model.js";
 import { createId } from "../utils/ids.js";
 import { nowIso } from "../utils/time.js";
 import {
+  getDictionaryImportAvailability,
   getDictionaryImportHistory,
   importDictionaryDataset,
   listAvailableDictionaryImportFiles
@@ -9,17 +11,19 @@ import {
 import { createStoryDraft } from "./story-service.js";
 
 export function createStoryAsAdmin(userId, payload) {
-  const story = createStoryDraft(payload);
+  return withTransaction(() => {
+    const story = createStoryDraft(payload);
 
-  createAdminUpload({
-    id: createId("upload"),
-    uploaded_by: userId,
-    target_type: "story",
-    payload_json: JSON.stringify(payload),
-    created_at: nowIso()
+    createAdminUpload({
+      id: createId("upload"),
+      uploaded_by: userId,
+      target_type: "story",
+      payload_json: JSON.stringify(payload),
+      created_at: nowIso()
+    });
+
+    return story;
   });
-
-  return story;
 }
 
 export function getAdminUploads() {
@@ -27,7 +31,10 @@ export function getAdminUploads() {
 }
 
 export function getDictionaryImportFiles() {
-  return listAvailableDictionaryImportFiles();
+  return {
+    ...getDictionaryImportAvailability(),
+    items: listAvailableDictionaryImportFiles()
+  };
 }
 
 export function getDictionaryImports() {

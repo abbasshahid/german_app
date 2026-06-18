@@ -15,7 +15,7 @@ export function getAdminUploadsController(_req, res) {
 }
 
 export function getDictionaryImportFilesController(_req, res) {
-  res.json({ items: getDictionaryImportFiles() });
+  res.json(getDictionaryImportFiles());
 }
 
 export function getDictionaryImportsController(_req, res) {

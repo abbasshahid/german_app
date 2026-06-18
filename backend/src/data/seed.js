@@ -274,6 +274,564 @@ export const seedData = {
             "<p>Heute komme ich in eine neue Stadt. Ich suche ein Zimmer und lerne meine ersten Nachbarn kennen.</p>"
         }
       ]
+    },
+    {
+      slug: "der-erste-einkauf",
+      title: "Der erste Einkauf",
+      subtitle: "Ein A1-Dialog im Supermarkt",
+      excerpt:
+        "A very simple dialogue about buying bread, fruit, and milk for a first week in Germany.",
+      content_type: "dialogue",
+      cefr_level: "A1",
+      genre: "dialogue",
+      read_minutes: 3,
+      word_count: 360,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1542838132-92c53300491e",
+      audio_text:
+        "Mira geht zum Supermarkt. Sie kauft Brot, Milch und Äpfel und fragt freundlich nach dem Preis.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "An der Kasse",
+          content_html: `
+            <p>Mira geht am Morgen in den Supermarkt. Sie hat eine kleine Liste: Brot, Milch, Käse und zwei Äpfel. Der <span class="word-interact" data-word="Einkauf">Einkauf</span> ist kurz, aber wichtig.</p>
+            <p>„Guten Morgen“, sagt Mira zur Verkäuferin. „Wo finde ich Brot?“ Die Verkäuferin lächelt. „Links, neben der Tür.“ Mira sagt: „Danke schön.“</p>
+            <p>Dann steht Mira an der Kasse. „Das macht acht Euro zwanzig“, sagt die Verkäuferin. Mira gibt ihr Geld und nimmt die Tasche.</p>
+            <p>Draußen schaut Mira in die Tasche. Alles ist da. Sie ist froh, denn jetzt kann sie zu Hause frühstücken.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "ein-brief-an-meine-familie",
+      title: "Ein Brief an meine Familie",
+      subtitle: "A1-Brief aus der neuen Stadt",
+      excerpt:
+        "A simple personal letter about a room, a school, and daily life in a new place.",
+      content_type: "letter",
+      cefr_level: "A1",
+      genre: "letter",
+      read_minutes: 3,
+      word_count: 340,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1510936111840-65e151ad71bb",
+      audio_text:
+        "Liebe Familie, mir geht es gut. Mein Zimmer ist klein, aber hell, und meine Schule ist nah.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Liebe Grüße",
+          content_html: `
+            <p>Liebe <span class="word-interact" data-word="Familie">Familie</span>, mir geht es gut. Ich wohne jetzt in einer kleinen Wohnung. Mein Zimmer ist hell, und mein Bett steht am Fenster.</p>
+            <p>Jeden Morgen gehe ich zur Schule. Die Lehrerin heißt Frau Stein. Sie spricht langsam, und ich verstehe schon viele Wörter.</p>
+            <p>Nach der Schule koche ich Reis oder Suppe. Manchmal trinke ich Tee mit meiner Nachbarin. Sie ist freundlich und hilft mir.</p>
+            <p>Ich vermisse euch, aber ich bin nicht allein. Bitte schreibt mir bald. Liebe Grüße, Samir.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "im-park-am-morgen",
+      title: "Im Park am Morgen",
+      subtitle: "A1-Geschichte mit einfachen Wegen und Orten",
+      excerpt:
+        "A calm beginner story about a walk through the park before class.",
+      content_type: "story",
+      cefr_level: "A1",
+      genre: "daily life",
+      read_minutes: 3,
+      word_count: 330,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1441974231531-c6227db76b6e",
+      audio_text:
+        "Lea geht am Morgen in den Park. Sie sieht Kinder, Bäume und eine kleine Bank.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Die Bank unter dem Baum",
+          content_html: `
+            <p>Lea steht früh auf. Der Himmel ist blau, und die Straße ist noch ruhig. Sie geht langsam zum <span class="word-interact" data-word="Park">Park</span>.</p>
+            <p>Im Park sieht Lea eine Bank unter einem Baum. Dort sitzt ein alter Mann und liest eine Zeitung. Ein Kind spielt mit einem Ball.</p>
+            <p>Lea setzt sich auf die Bank. Sie trinkt Wasser und hört die Vögel. Sie hat noch Zeit, denn ihr Kurs beginnt erst um neun Uhr.</p>
+            <p>Dann steht sie auf und geht weiter. Der Morgen ist leicht, und Lea fühlt sich bereit für den Tag.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "mein-ruhiger-tag",
+      title: "Mein ruhiger Tag",
+      subtitle: "Ein kurzer A1-Alltagstext",
+      excerpt:
+        "A short first-person text with simple routines from morning to evening.",
+      content_type: "essay",
+      cefr_level: "A1",
+      genre: "daily life",
+      read_minutes: 2,
+      word_count: 300,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+      audio_text:
+        "Mein Tag beginnt um sieben Uhr. Ich mache Kaffee, lerne Deutsch und gehe später nach Hause.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Von sieben bis zehn",
+          content_html: `
+            <p>Mein <span class="word-interact" data-word="Tag">Tag</span> beginnt um sieben Uhr. Ich öffne das Fenster und mache Kaffee. Dann esse ich Brot mit Käse.</p>
+            <p>Um acht Uhr lerne ich Deutsch. Ich schreibe neue Wörter in ein Heft. Danach höre ich einen kurzen Dialog.</p>
+            <p>Am Nachmittag gehe ich in die Stadt. Ich kaufe Gemüse und treffe einen Freund vor der Schule.</p>
+            <p>Am Abend lese ich zehn Minuten. Dann bin ich müde, aber zufrieden.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "eine-reise-mit-dem-zug",
+      title: "Eine Reise mit dem Zug",
+      subtitle: "A2-Geschichte über Fahrkarten und Pläne",
+      excerpt:
+        "An accessible travel story about a delayed train and a helpful stranger at the platform.",
+      content_type: "story",
+      cefr_level: "A2",
+      genre: "travel",
+      read_minutes: 4,
+      word_count: 520,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1474487548417-781cb71495f3",
+      audio_text:
+        "Jonas wartet am Bahnsteig. Sein Zug nach Leipzig hat Verspätung, aber eine Frau hilft ihm mit der Anzeige.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Gleis vier",
+          content_html: `
+            <p>Jonas steht am <span class="word-interact" data-word="Bahnsteig">Bahnsteig</span> und schaut auf die große Anzeige. Sein Zug nach Leipzig sollte um zehn Uhr kommen, aber jetzt steht dort: zwanzig Minuten Verspätung.</p>
+            <p>Er wird nervös, denn in Leipzig möchte er seine Cousine treffen. Neben ihm steht eine Frau mit einem roten Koffer. „Keine Sorge“, sagt sie. „Der Anschluss wartet oft.“</p>
+            <p>Jonas fragt sie, wo er später umsteigen muss. Die Frau zeigt auf den Plan und erklärt den Weg langsam. Jonas schreibt die Gleisnummer in sein Handy.</p>
+            <p>Als der Zug endlich kommt, steigt Jonas ruhig ein. Er findet einen Platz am Fenster und denkt: Reisen ist leichter, wenn man fragen kann.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "brief-aus-hamburg",
+      title: "Brief aus Hamburg",
+      subtitle: "A2-Brief mit Stadt und Wetter",
+      excerpt:
+        "A friendly letter describing a weekend near the harbor, windy weather, and simple plans.",
+      content_type: "letter",
+      cefr_level: "A2",
+      genre: "letter",
+      read_minutes: 4,
+      word_count: 500,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1518457607834-6e8d80c183c5",
+      audio_text:
+        "Liebe Nina, Hamburg gefällt mir sehr. Am Hafen ist es windig, aber die Schiffe sehen wunderbar aus.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Wind und Schiffe",
+          content_html: `
+            <p>Liebe Nina, Hamburg gefällt mir sehr. Gestern war ich am <span class="word-interact" data-word="Hafen">Hafen</span>. Es war windig, aber nicht kalt, und die großen Schiffe sahen beeindruckend aus.</p>
+            <p>Am Nachmittag habe ich Fisch gegessen und danach einen Spaziergang gemacht. Überall hörte ich Musik, Stimmen und Möwen. Die Stadt ist laut, aber lebendig.</p>
+            <p>Heute besuche ich ein kleines Museum. Danach möchte ich mit der U-Bahn zu einem Park fahren. Wenn es regnet, bleibe ich in einem Café und schreibe weiter.</p>
+            <p>Ich hoffe, du kommst eines Tages mit. Dann zeige ich dir die Brücken, den Markt und mein Lieblingsfenster mit Blick auf das Wasser.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "warum-ich-gern-lerne",
+      title: "Warum ich gern lerne",
+      subtitle: "A2-Essay über Motivation",
+      excerpt:
+        "A clear learner essay about small goals, mistakes, and daily practice.",
+      content_type: "essay",
+      cefr_level: "A2",
+      genre: "essay",
+      read_minutes: 4,
+      word_count: 480,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+      audio_text:
+        "Ich lerne gern Deutsch, weil ich mit Menschen sprechen und neue Geschichten verstehen möchte.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Kleine Schritte",
+          content_html: `
+            <p>Ich <span class="word-interact" data-word="lerne">lerne</span> gern Deutsch, weil Sprache Türen öffnet. Wenn ich ein neues Wort verstehe, fühle ich mich sicherer im Alltag.</p>
+            <p>Natürlich mache ich Fehler. Manchmal vergesse ich einen Artikel oder benutze das falsche Verb. Aber Fehler zeigen mir, was ich noch üben muss.</p>
+            <p>Jeden Tag habe ich ein kleines Ziel. Ich lese eine kurze Seite, höre einen Dialog oder spreche fünf Minuten mit einer Freundin.</p>
+            <p>So wird Lernen nicht zu groß. Es passt in mein Leben, und nach einigen Wochen sehe ich, dass ich wirklich weiterkomme.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "nachbarschaftsfest-im-hof",
+      title: "Nachbarschaftsfest im Hof",
+      subtitle: "B1-Dialog über Planung und Zusammenarbeit",
+      excerpt:
+        "A practical dialogue about neighbors organizing food, music, and quiet hours for a courtyard party.",
+      content_type: "dialogue",
+      cefr_level: "B1",
+      genre: "dialogue",
+      read_minutes: 5,
+      word_count: 650,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1529156069898-49953e39b3ac",
+      audio_text:
+        "Die Nachbarschaft plant ein Fest im Hof. Alle bringen etwas mit, und am Abend soll es nicht zu laut werden.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Wer bringt die Tische?",
+          content_html: `
+            <p>Im Hof stehen drei Nachbarn zusammen. „Unsere <span class="word-interact" data-word="Nachbarschaft">Nachbarschaft</span> kennt sich kaum“, sagt Elena. „Ein kleines Fest könnte helfen.“</p>
+            <p>„Gute Idee“, antwortet Herr Yilmaz. „Ich bringe zwei Tische und eine Kanne Tee. Aber wir müssen die Ruhezeiten beachten.“</p>
+            <p>„Natürlich“, sagt Ben. „Musik nur bis neun Uhr, danach räumen wir gemeinsam auf. Ich schreibe eine Liste für Essen, Getränke und Stühle.“</p>
+            <p>Am Ende sind alle erleichtert. Niemand muss alles allein machen, und jeder hat eine Aufgabe, die gut passt.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "ein-brief-an-die-verwaltung",
+      title: "Ein Brief an die Verwaltung",
+      subtitle: "B1 formeller Brief mit höflichem Ton",
+      excerpt:
+        "A model letter about a broken hallway light and a clear request for repair.",
+      content_type: "letter",
+      cefr_level: "B1",
+      genre: "letter",
+      read_minutes: 5,
+      word_count: 620,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1516321497487-e288fb19713f",
+      audio_text:
+        "Sehr geehrte Damen und Herren, seit drei Tagen funktioniert das Licht im Treppenhaus nicht.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Bitte um Reparatur",
+          content_html: `
+            <p>Sehr geehrte Damen und Herren, ich schreibe Ihnen, weil das Licht im Treppenhaus seit drei Tagen nicht funktioniert. Besonders am Abend ist der Weg dadurch unsicher.</p>
+            <p>Mehrere Personen aus dem Haus haben die Hausmeisterin schon informiert. Leider konnte das Problem noch nicht gelöst werden, deshalb wende ich mich nun direkt an die <span class="word-interact" data-word="Verwaltung">Verwaltung</span>.</p>
+            <p>Ich bitte Sie höflich, die Reparatur bald zu organisieren. Falls Sie weitere Informationen brauchen, bin ich telefonisch oder per E-Mail erreichbar.</p>
+            <p>Vielen Dank für Ihre Hilfe. Mit freundlichen Grüßen, Amina Rahman.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "die-kleine-fahrradwerkstatt",
+      title: "Die kleine Fahrradwerkstatt",
+      subtitle: "B1-Geschichte über Arbeit und Vertrauen",
+      excerpt:
+        "A neighborhood story about a repair shop owner, a flat tire, and honest service.",
+      content_type: "story",
+      cefr_level: "B1",
+      genre: "daily life",
+      read_minutes: 6,
+      word_count: 720,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1485965120184-e220f721d03e",
+      audio_text:
+        "In der kleinen Fahrradwerkstatt repariert Paul nicht nur Räder. Er hört auch die Geschichten seiner Kunden.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Der platte Reifen",
+          content_html: `
+            <p>Pauls <span class="word-interact" data-word="Werkstatt">Werkstatt</span> liegt in einer Seitenstraße. Vor der Tür stehen alte Räder, neue Helme und ein Schild: Reparaturen bis achtzehn Uhr.</p>
+            <p>Eines Nachmittags kommt eine Studentin mit einem platten Reifen. Sie muss in zwanzig Minuten zur Arbeit und sieht sehr besorgt aus.</p>
+            <p>Paul prüft den Schlauch und findet ein kleines Stück Glas. „Das schaffen wir“, sagt er. Während er arbeitet, erzählt die Studentin von ihrem ersten Monat in der Stadt.</p>
+            <p>Nach zehn Minuten ist das Rad wieder fertig. Die Studentin bezahlt und lächelt. Paul winkt ihr nach und weiß, warum er seine Arbeit mag.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "warum-regeln-helfen",
+      title: "Warum Regeln helfen",
+      subtitle: "B1-Essay über Alltag und Fairness",
+      excerpt:
+        "A balanced essay explaining how rules can make shared spaces calmer and fairer.",
+      content_type: "essay",
+      cefr_level: "B1",
+      genre: "essay",
+      read_minutes: 5,
+      word_count: 650,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1497366754035-f200968a6e72",
+      audio_text:
+        "Regeln wirken manchmal streng, aber im Alltag können sie helfen, Konflikte zu vermeiden.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Gemeinsam leben",
+          content_html: `
+            <p><span class="word-interact" data-word="Regeln">Regeln</span> wirken manchmal streng. Trotzdem helfen sie uns, wenn viele Menschen denselben Raum nutzen, zum Beispiel in der Schule, im Haus oder im Büro.</p>
+            <p>Eine gute Regel ist klar und fair. Sie erklärt, was erlaubt ist und was nicht. Dann müssen Menschen nicht jedes Mal neu diskutieren.</p>
+            <p>Natürlich sollten Regeln nicht blind gelten. Wenn sich eine Situation ändert, muss man auch über Ausnahmen sprechen können.</p>
+            <p>Für mich sind Regeln wie ein gemeinsamer Plan. Sie funktionieren am besten, wenn alle verstehen, warum es sie gibt.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "die-stille-konferenz",
+      title: "Die stille Konferenz",
+      subtitle: "B2-Dialog über klare Kommunikation",
+      excerpt:
+        "A workplace dialogue about a tense conference, careful listening, and a practical compromise.",
+      content_type: "dialogue",
+      cefr_level: "B2",
+      genre: "workplace",
+      read_minutes: 6,
+      word_count: 760,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1556761175-b413da4baf72",
+      audio_text:
+        "Nach einer stillen Konferenz sprechen zwei Kolleginnen darüber, warum niemand die eigentlichen Probleme benannt hat.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Nach dem letzten Punkt",
+          content_html: `
+            <p>Nach der <span class="word-interact" data-word="Konferenz">Konferenz</span> blieb der Raum ungewöhnlich still. Auf dem Bildschirm stand noch die letzte Folie, aber niemand sah mehr hin.</p>
+            <p>„Wir haben zwei Stunden geredet und trotzdem nichts entschieden“, sagte Mara. Ihr Kollege Tobias nickte. „Weil alle höflich um das eigentliche Problem herumgesprochen haben.“</p>
+            <p>Mara schlug vor, die nächste Sitzung anders zu beginnen: erst die offenen Konflikte sammeln, dann Prioritäten setzen, danach Aufgaben verteilen. Tobias ergänzte, dass jede Aufgabe eine verantwortliche Person brauche.</p>
+            <p>Am Ende schrieben sie einen kurzen Vorschlag an das Team. Er war nicht perfekt, aber klar genug, um die nächste Diskussion produktiver zu machen.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "brief-an-die-redaktion",
+      title: "Brief an die Redaktion",
+      subtitle: "B2-Leserbrief über Verkehr in der Stadt",
+      excerpt:
+        "A structured letter to an editor about bike lanes, delivery traffic, and practical civic compromise.",
+      content_type: "letter",
+      cefr_level: "B2",
+      genre: "letter",
+      read_minutes: 6,
+      word_count: 780,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1495020689067-958852a7765e",
+      audio_text:
+        "Sehr geehrte Redaktion, Ihr Artikel über den Verkehr in unserer Stadt hat eine wichtige Debatte eröffnet.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Mehr als ein Radweg",
+          content_html: `
+            <p>Sehr geehrte <span class="word-interact" data-word="Redaktion">Redaktion</span>, Ihr Artikel über den Verkehr in unserer Stadt hat eine wichtige Debatte eröffnet. Viele Leserinnen und Leser erleben dieselben Konflikte täglich.</p>
+            <p>Ich unterstütze sichere Radwege, weil sie nicht nur Radfahrenden helfen. Wenn mehr Menschen das Fahrrad nutzen, werden Straßen leiser und Busse kommen schneller voran.</p>
+            <p>Gleichzeitig darf man Lieferverkehr und ältere Menschen nicht vergessen. Einige Straßen brauchen kurze Haltezonen, klare Zeiten und gut sichtbare Übergänge.</p>
+            <p>Die Frage lautet also nicht, ob Autos oder Fahrräder gewinnen. Die bessere Frage ist, wie die Stadt für verschiedene Bedürfnisse verlässlich funktionieren kann.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "zwischen-tradition-und-tempo",
+      title: "Zwischen Tradition und Tempo",
+      subtitle: "B2-Essay über Veränderung im Alltag",
+      excerpt:
+        "A reflective essay about balancing familiar routines with the speed of modern life.",
+      content_type: "essay",
+      cefr_level: "B2",
+      genre: "essay",
+      read_minutes: 6,
+      word_count: 760,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+      audio_text:
+        "Veränderung gehört zum Alltag, aber nicht jede Tradition muss verschwinden, nur weil das Leben schneller wird.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Langsam bleiben können",
+          content_html: `
+            <p>Der <span class="word-interact" data-word="Wandel">Wandel</span> des Alltags ist überall sichtbar: Wir arbeiten digitaler, kaufen schneller ein und erwarten sofortige Antworten.</p>
+            <p>Traditionen wirken in diesem Tempo manchmal altmodisch. Ein gemeinsames Essen, ein handgeschriebener Gruß oder ein fester Wochenmarkt brauchen Zeit.</p>
+            <p>Gerade deshalb können solche Gewohnheiten wertvoll sein. Sie unterbrechen die Eile und geben Menschen die Möglichkeit, einander wirklich wahrzunehmen.</p>
+            <p>Modern zu leben bedeutet für mich nicht, alles Alte aufzugeben. Es bedeutet, bewusst zu entscheiden, welche Formen von Langsamkeit wir behalten wollen.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "ein-offener-brief-zur-stadtplanung",
+      title: "Ein offener Brief zur Stadtplanung",
+      subtitle: "C1-Brief über Raum, Teilhabe und Verantwortung",
+      excerpt:
+        "An advanced open letter arguing for humane urban planning and civic participation.",
+      content_type: "letter",
+      cefr_level: "C1",
+      genre: "letter",
+      read_minutes: 7,
+      word_count: 900,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1449824913935-59a10b8d2000",
+      audio_text:
+        "Sehr geehrte Mitglieder des Stadtrats, Stadtplanung entscheidet darüber, wer sich gesehen, sicher und beteiligt fühlt.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Wer plant die Stadt?",
+          content_html: `
+            <p>Sehr geehrte Mitglieder des Stadtrats, <span class="word-interact" data-word="Stadtplanung">Stadtplanung</span> ist mehr als die Verteilung von Gebäuden, Wegen und Grünflächen. Sie entscheidet darüber, wer sich gesehen und beteiligt fühlt.</p>
+            <p>Wenn Plätze ausschließlich nach Effizienz gestaltet werden, verlieren sie ihre soziale Funktion. Menschen brauchen Orte, an denen Aufenthalt nicht sofort Konsum bedeutet.</p>
+            <p>Ich bitte Sie daher, Bürgerinnen und Bürger früher einzubeziehen. Beteiligung darf nicht erst beginnen, wenn die zentralen Entscheidungen praktisch schon gefallen sind.</p>
+            <p>Eine Stadt wird nicht menschlicher, weil sie konfliktfrei ist. Sie wird menschlicher, wenn Konflikte transparent verhandelt und unterschiedliche Lebenslagen ernst genommen werden.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "das-protokoll-der-stille",
+      title: "Das Protokoll der Stille",
+      subtitle: "C1-Dialog über Erinnerung und Verantwortung",
+      excerpt:
+        "A nuanced dialogue in an archive about what official records include and what they leave unsaid.",
+      content_type: "dialogue",
+      cefr_level: "C1",
+      genre: "dialogue",
+      read_minutes: 7,
+      word_count: 880,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1481627834876-b7833e8f5570",
+      audio_text:
+        "Im Archiv diskutieren Mira und Dr. Keller, warum ein Protokoll manchmal mehr durch seine Lücken als durch seine Sätze verrät.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Lücken im Archiv",
+          content_html: `
+            <p>„Dieses <span class="word-interact" data-word="Protokoll">Protokoll</span> ist erstaunlich knapp“, sagte Mira und legte die Kopie auf den Tisch. „Drei Seiten für eine Sitzung, die den ganzen Nachmittag dauerte.“</p>
+            <p>Dr. Keller rückte seine Brille zurecht. „Knappheit ist auch eine Aussage. Manchmal zeigt ein Dokument gerade durch seine Auslassungen, welche Konflikte niemand festhalten wollte.“</p>
+            <p>Mira fragte, ob man solche Lücken interpretieren dürfe. „Man muss“, antwortete Keller, „aber mit Vorsicht. Archive liefern Spuren, keine fertigen Urteile.“</p>
+            <p>Sie lasen weiter, langsamer als zuvor. Zwischen den sachlichen Formulierungen entstand eine zweite Geschichte: die Geschichte dessen, was nicht gesagt werden sollte.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "ueber-die-kunst-des-zuhoerens",
+      title: "Über die Kunst des Zuhörens",
+      subtitle: "C1-Essay über Gesprächskultur",
+      excerpt:
+        "An advanced essay about attentive listening as an intellectual and social practice.",
+      content_type: "essay",
+      cefr_level: "C1",
+      genre: "essay",
+      read_minutes: 7,
+      word_count: 880,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
+      audio_text:
+        "Zuhören ist keine passive Pause im Gespräch, sondern eine anspruchsvolle Form der Aufmerksamkeit.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Aufmerksamkeit als Handlung",
+          content_html: `
+            <p><span class="word-interact" data-word="Zuhören">Zuhören</span> wird häufig unterschätzt, weil es äußerlich ruhig wirkt. Tatsächlich verlangt es Konzentration, Geduld und die Bereitschaft, die eigene Antwort kurz zurückzustellen.</p>
+            <p>In vielen Debatten warten Menschen nur auf eine Lücke, in die sie ihr nächstes Argument setzen können. Das Gespräch wird dann zu einer Abfolge vorbereiteter Positionen.</p>
+            <p>Echtes Zuhören verändert diese Dynamik. Es fragt nicht nur: Was kann ich erwidern? Es fragt auch: Was habe ich noch nicht verstanden?</p>
+            <p>Gerade in komplexen Situationen ist diese Haltung produktiv. Wer sorgfältig zuhört, erkennt Unterschiede genauer und findet Lösungen, die vorher unsichtbar blieben.</p>
+          `
+        }
+      ]
+    },
+    {
+      slug: "die-nachlasskarte",
+      title: "Die Nachlasskarte",
+      subtitle: "C1-Geschichte über Herkunft und Deutung",
+      excerpt:
+        "A literary story about a map found in an inherited box and the questions it raises.",
+      content_type: "story",
+      cefr_level: "C1",
+      genre: "literary",
+      read_minutes: 8,
+      word_count: 960,
+      cover_image_url:
+        "https://images.unsplash.com/photo-1524661135-423995f22d0b",
+      audio_text:
+        "Im Nachlass ihrer Großmutter findet Clara eine Karte ohne Datum, aber mit einer Linie, die quer durch ihre Familiengeschichte führt.",
+      audio_url: null,
+      is_featured: 0,
+      is_published: 1,
+      chapters: [
+        {
+          chapter_number: 1,
+          title: "Die rote Linie",
+          content_html: `
+            <p>Der <span class="word-interact" data-word="Nachlass">Nachlass</span> ihrer Großmutter passte in zwei Kartons: Briefe, Fotografien, ein Tuch aus Seide und eine Karte ohne Datum.</p>
+            <p>Clara breitete die Karte auf dem Küchentisch aus. Eine rote Linie führte von einem kleinen Dorf bis zu einer Stadt, deren Name mehrfach überschrieben worden war.</p>
+            <p>Je länger sie hinsah, desto weniger wirkte die Linie wie eine Reiseroute. Sie sah eher aus wie der Versuch, eine Entscheidung nachträglich verständlich zu machen.</p>
+            <p>Am Abend rief Clara ihren Vater an. Zum ersten Mal fragte sie nicht nur, woher die Familie kam, sondern auch, warum niemand gern darüber sprach.</p>
+          `
+        }
+      ]
     }
   ],
   dictionaryEntries: [
@@ -385,6 +943,270 @@ export const seedData = {
       related_words: ["widerstandsfähig", "stark"],
       forms: ["resilient", "resiliente", "resilienten"],
       audio_label: "resilient"
+    },
+    {
+      lemma: "das Haus",
+      translation: "house, building",
+      part_of_speech: "Nomen (Neutrum)",
+      grammar_notes: "Plural is 'Häuser'; common for homes and buildings.",
+      cefr_level: "A1",
+      example_de: "Die Sonne scheint warm über die Häuser.",
+      example_en: "The sun shines warmly over the houses.",
+      related_words: ["zu Hause", "das Gebäude"],
+      forms: ["Haus", "Häuser", "Häusern", "Hauses", "haus", "häuser"],
+      audio_label: "das Haus"
+    },
+    {
+      lemma: "der Koffer",
+      translation: "suitcase",
+      part_of_speech: "Nomen (Maskulin)",
+      grammar_notes: "The plural form is usually unchanged: 'die Koffer'.",
+      cefr_level: "A1",
+      example_de: "In der Mitte des Platzes liegt ein Koffer.",
+      example_en: "There is a suitcase in the middle of the square.",
+      related_words: ["die Tasche", "das Gepäck"],
+      forms: ["Koffer", "Koffern", "koffer"],
+      audio_label: "der Koffer"
+    },
+    {
+      lemma: "der Schlüssel",
+      translation: "key",
+      part_of_speech: "Nomen (Maskulin)",
+      grammar_notes: "The same form is used for singular and plural in many contexts.",
+      cefr_level: "A1",
+      example_de: "Er holt einen kleinen Schlüssel aus seiner Tasche.",
+      example_en: "He takes a small key from his pocket.",
+      related_words: ["das Schloss", "aufschließen"],
+      forms: ["Schlüssel", "Schlüsseln", "schlüssel"],
+      audio_label: "der Schlüssel"
+    },
+    {
+      lemma: "das Notizbuch",
+      translation: "notebook",
+      part_of_speech: "Nomen (Neutrum)",
+      grammar_notes: "Compound noun from 'Notiz' and 'Buch'.",
+      cefr_level: "A2",
+      example_de: "Drinnen liegt ein einfaches Notizbuch.",
+      example_en: "Inside there is a simple notebook.",
+      related_words: ["die Notiz", "das Buch"],
+      forms: ["Notizbuch", "Notizbücher", "Notizbüchern", "notizbuch"],
+      audio_label: "das Notizbuch"
+    },
+    {
+      lemma: "der Einkauf",
+      translation: "shopping, purchase",
+      part_of_speech: "Nomen (Maskulin)",
+      grammar_notes: "Often used for the act of shopping or the goods bought.",
+      cefr_level: "A1",
+      example_de: "Der Einkauf ist kurz, aber wichtig.",
+      example_en: "The shopping trip is short but important.",
+      related_words: ["einkaufen", "der Supermarkt"],
+      forms: ["Einkauf", "Einkäufe", "Einkäufen", "einkauf"],
+      audio_label: "der Einkauf"
+    },
+    {
+      lemma: "die Familie",
+      translation: "family",
+      part_of_speech: "Nomen (Feminin)",
+      grammar_notes: "Plural is 'Familien'.",
+      cefr_level: "A1",
+      example_de: "Liebe Familie, mir geht es gut.",
+      example_en: "Dear family, I am doing well.",
+      related_words: ["die Eltern", "die Geschwister"],
+      forms: ["Familie", "Familien", "familie"],
+      audio_label: "die Familie"
+    },
+    {
+      lemma: "der Park",
+      translation: "park",
+      part_of_speech: "Nomen (Maskulin)",
+      grammar_notes: "Usually takes '-s' in the plural: 'die Parks'.",
+      cefr_level: "A1",
+      example_de: "Sie geht langsam zum Park.",
+      example_en: "She slowly walks to the park.",
+      related_words: ["der Garten", "spazieren gehen"],
+      forms: ["Park", "Parks", "park"],
+      audio_label: "der Park"
+    },
+    {
+      lemma: "der Tag",
+      translation: "day",
+      part_of_speech: "Nomen (Maskulin)",
+      grammar_notes: "Plural is 'Tage'; dative plural is 'Tagen'.",
+      cefr_level: "A1",
+      example_de: "Mein Tag beginnt um sieben Uhr.",
+      example_en: "My day begins at seven o'clock.",
+      related_words: ["heute", "täglich"],
+      forms: ["Tag", "Tage", "Tagen", "Tages", "tag"],
+      audio_label: "der Tag"
+    },
+    {
+      lemma: "der Bahnsteig",
+      translation: "platform",
+      part_of_speech: "Nomen (Maskulin)",
+      grammar_notes: "Used at train stations for the platform beside the tracks.",
+      cefr_level: "A2",
+      example_de: "Jonas steht am Bahnsteig und schaut auf die Anzeige.",
+      example_en: "Jonas stands on the platform and looks at the display.",
+      related_words: ["das Gleis", "der Zug"],
+      forms: ["Bahnsteig", "Bahnsteige", "Bahnsteigen", "bahnsteig"],
+      audio_label: "der Bahnsteig"
+    },
+    {
+      lemma: "der Hafen",
+      translation: "harbor, port",
+      part_of_speech: "Nomen (Maskulin)",
+      grammar_notes: "Plural can be 'Häfen'; common in city and travel contexts.",
+      cefr_level: "A2",
+      example_de: "Gestern war ich am Hafen.",
+      example_en: "Yesterday I was at the harbor.",
+      related_words: ["das Schiff", "das Wasser"],
+      forms: ["Hafen", "Hafens", "Häfen", "hafen"],
+      audio_label: "der Hafen"
+    },
+    {
+      lemma: "lernen",
+      translation: "to learn, to study",
+      part_of_speech: "Verb",
+      grammar_notes: "Regular verb; first-person singular present is 'ich lerne'.",
+      cefr_level: "A1",
+      example_de: "Ich lerne gern Deutsch.",
+      example_en: "I like learning German.",
+      related_words: ["üben", "verstehen"],
+      forms: ["lerne", "lernst", "lernt", "gelernt"],
+      audio_label: "lernen"
+    },
+    {
+      lemma: "die Nachbarschaft",
+      translation: "neighborhood, neighborly community",
+      part_of_speech: "Nomen (Feminin)",
+      grammar_notes: "Can refer to the area or to the people who live nearby.",
+      cefr_level: "B1",
+      example_de: "Unsere Nachbarschaft kennt sich kaum.",
+      example_en: "Our neighborhood hardly knows one another.",
+      related_words: ["der Nachbar", "die Gemeinschaft"],
+      forms: ["Nachbarschaft", "Nachbarschaften", "nachbarschaft"],
+      audio_label: "die Nachbarschaft"
+    },
+    {
+      lemma: "die Verwaltung",
+      translation: "administration, management office",
+      part_of_speech: "Nomen (Feminin)",
+      grammar_notes: "Common in formal letters and housing contexts.",
+      cefr_level: "B1",
+      example_de: "Ich wende mich nun direkt an die Verwaltung.",
+      example_en: "I am now contacting the management office directly.",
+      related_words: ["verwalten", "das Amt"],
+      forms: ["Verwaltung", "Verwaltungen", "verwaltung"],
+      audio_label: "die Verwaltung"
+    },
+    {
+      lemma: "die Werkstatt",
+      translation: "workshop, repair shop",
+      part_of_speech: "Nomen (Feminin)",
+      grammar_notes: "Plural is 'Werkstätten'.",
+      cefr_level: "B1",
+      example_de: "Pauls Werkstatt liegt in einer Seitenstraße.",
+      example_en: "Paul's workshop is located on a side street.",
+      related_words: ["reparieren", "das Werkzeug"],
+      forms: ["Werkstatt", "Werkstätten", "werkstatt"],
+      audio_label: "die Werkstatt"
+    },
+    {
+      lemma: "die Regel",
+      translation: "rule",
+      part_of_speech: "Nomen (Feminin)",
+      grammar_notes: "Plural is 'Regeln'; also appears in phrases like 'in der Regel'.",
+      cefr_level: "A2",
+      example_de: "Regeln wirken manchmal streng.",
+      example_en: "Rules sometimes seem strict.",
+      related_words: ["regeln", "die Ausnahme"],
+      forms: ["Regel", "Regeln", "regel", "regeln"],
+      audio_label: "die Regel"
+    },
+    {
+      lemma: "die Konferenz",
+      translation: "conference, meeting",
+      part_of_speech: "Nomen (Feminin)",
+      grammar_notes: "Plural is 'Konferenzen'.",
+      cefr_level: "B2",
+      example_de: "Nach der Konferenz blieb der Raum ungewöhnlich still.",
+      example_en: "After the conference, the room remained unusually quiet.",
+      related_words: ["die Sitzung", "besprechen"],
+      forms: ["Konferenz", "Konferenzen", "konferenz"],
+      audio_label: "die Konferenz"
+    },
+    {
+      lemma: "die Redaktion",
+      translation: "editorial office, editorial team",
+      part_of_speech: "Nomen (Feminin)",
+      grammar_notes: "Common in media contexts and letters to newspapers.",
+      cefr_level: "B2",
+      example_de: "Sehr geehrte Redaktion, Ihr Artikel hat eine Debatte eröffnet.",
+      example_en: "Dear editorial team, your article has opened a debate.",
+      related_words: ["der Artikel", "die Zeitung"],
+      forms: ["Redaktion", "Redaktionen", "redaktion"],
+      audio_label: "die Redaktion"
+    },
+    {
+      lemma: "der Wandel",
+      translation: "change, transformation",
+      part_of_speech: "Nomen (Maskulin)",
+      grammar_notes: "A higher-register noun for social or gradual change.",
+      cefr_level: "B2",
+      example_de: "Der Wandel des Alltags ist überall sichtbar.",
+      example_en: "The transformation of everyday life is visible everywhere.",
+      related_words: ["die Veränderung", "sich wandeln"],
+      forms: ["Wandel", "Wandels", "wandel"],
+      audio_label: "der Wandel"
+    },
+    {
+      lemma: "die Stadtplanung",
+      translation: "urban planning",
+      part_of_speech: "Nomen (Feminin)",
+      grammar_notes: "Compound noun from 'Stadt' and 'Planung'.",
+      cefr_level: "C1",
+      example_de: "Stadtplanung ist mehr als die Verteilung von Gebäuden.",
+      example_en: "Urban planning is more than the distribution of buildings.",
+      related_words: ["die Stadt", "die Planung"],
+      forms: ["Stadtplanung", "stadtplanung"],
+      audio_label: "die Stadtplanung"
+    },
+    {
+      lemma: "das Protokoll",
+      translation: "minutes, protocol, record",
+      part_of_speech: "Nomen (Neutrum)",
+      grammar_notes: "In meetings, 'das Protokoll' means the written minutes or record.",
+      cefr_level: "B2",
+      example_de: "Dieses Protokoll ist erstaunlich knapp.",
+      example_en: "These minutes are surprisingly brief.",
+      related_words: ["protokollieren", "die Sitzung"],
+      forms: ["Protokoll", "Protokolle", "Protokollen", "protokoll"],
+      audio_label: "das Protokoll"
+    },
+    {
+      lemma: "das Zuhören",
+      translation: "listening",
+      part_of_speech: "Nominalisiertes Verb (Neutrum)",
+      grammar_notes: "Capitalized because the infinitive is used as a noun.",
+      cefr_level: "B2",
+      example_de: "Zuhören verlangt Konzentration und Geduld.",
+      example_en: "Listening requires concentration and patience.",
+      related_words: ["zuhören", "die Aufmerksamkeit"],
+      forms: ["Zuhören", "zuhören", "zuhört", "zugehört"],
+      audio_label: "das Zuhören"
+    },
+    {
+      lemma: "der Nachlass",
+      translation: "estate, literary remains",
+      part_of_speech: "Nomen (Maskulin)",
+      grammar_notes: "Used for belongings or papers left after someone's death.",
+      cefr_level: "C1",
+      example_de: "Der Nachlass ihrer Großmutter passte in zwei Kartons.",
+      example_en: "Her grandmother's estate fit into two boxes.",
+      related_words: ["erben", "die Erinnerung"],
+      forms: ["Nachlass", "Nachlasses", "Nachlässe", "nachlass"],
+      audio_label: "der Nachlass"
     }
   ],
   savedWords: [
