@@ -15,6 +15,9 @@ ensureDataDirectories();
 export const db = new DatabaseSync(databasePath);
 
 db.exec("PRAGMA journal_mode = WAL; PRAGMA foreign_keys = ON;");
+db.exec(schemaSql);
+
+let isInitialized = false;
 
 function seedKey(value) {
   return normalizeWord(value)
@@ -25,8 +28,12 @@ function seedKey(value) {
 }
 
 export function initDatabase() {
-  db.exec(schemaSql);
+  if (isInitialized) {
+    return;
+  }
+
   ensureSeedData();
+  isInitialized = true;
   logger.info("database_ready", { databasePath });
 }
 

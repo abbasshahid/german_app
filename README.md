@@ -33,6 +33,14 @@ Demo credentials are seeded automatically:
 - Email: `julian@archivist.app`
 - Password: `Archivist123!`
 
+## Deploy On Vercel Free
+
+This repo now exports the Express app from the root `app.js`, which Vercel can deploy directly. Vercel runs `npm run vercel-build` to copy the HTML pages and browser assets into `public/`, then serves the app from the free serverless runtime.
+
+No cloud storage is required. On Vercel, the SQLite database is created in `/tmp/archivist-data`, so it is ephemeral: demo data is seeded automatically, but new users, sessions, saved words, imports, and admin edits can reset whenever Vercel replaces the serverless instance.
+
+Use Node 22.5 or newer because the app uses Node's built-in `node:sqlite`.
+
 ## Stack
 
 - Frontend: static HTML + Tailwind CDN + ES modules

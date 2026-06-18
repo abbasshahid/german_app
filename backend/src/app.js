@@ -12,7 +12,7 @@ import apiRouter from "./routes/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const frontendRoot = path.resolve(__dirname, "../../frontend");
+const frontendRoot = process.env.VERCEL ? path.resolve(process.cwd(), "public") : path.resolve(__dirname, "../../frontend");
 const pagesDirectory = path.join(frontendRoot, "pages");
 const assetsDirectory = path.join(frontendRoot, "assets");
 

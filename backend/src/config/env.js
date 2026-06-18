@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const DEFAULT_PORT = 3000;
+const vercelUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null;
 
 export const env = {
   appName: process.env.APP_NAME ?? "The Archivist",
@@ -12,7 +13,7 @@ export const env = {
   sessionDays: Number(process.env.SESSION_DAYS ?? 14),
   demoUserEmail: process.env.DEMO_USER_EMAIL ?? "julian@archivist.app",
   demoUserPassword: process.env.DEMO_USER_PASSWORD ?? "Archivist123!",
-  appBaseUrl: process.env.APP_BASE_URL ?? `http://localhost:${process.env.PORT ?? DEFAULT_PORT}`
+  appBaseUrl: process.env.APP_BASE_URL ?? vercelUrl ?? `http://localhost:${process.env.PORT ?? DEFAULT_PORT}`
 };
 
 export function isProduction() {

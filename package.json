@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "node --watch backend/src/server.js",
     "start": "node backend/src/server.js",
-    "check": "node --check backend/src/server.js"
+    "check": "node --check app.js && node --check backend/src/server.js",
+    "vercel-build": "node scripts/prepare-vercel.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
